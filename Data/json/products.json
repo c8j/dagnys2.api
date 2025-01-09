@@ -1,0 +1,310 @@
+[
+    {
+        "itemNumber": "AA001",
+        "price": 14,
+        "productType": {
+            "name": "Mjölk"
+        }
+    },
+    {
+        "itemNumber": "AA002",
+        "price": 17,
+        "productType": {
+            "name": "Mjölk"
+        }
+    },
+    {
+        "itemNumber": "AA003",
+        "price": 19,
+        "productType": {
+            "name": "Mjölk"
+        }
+    },
+    {
+        "itemNumber": "AA004",
+        "price": 21,
+        "productType": {
+            "name": "Mjölk"
+        }
+    },
+    {
+        "itemNumber": "AB005",
+        "price": 3.5,
+        "productType": {
+            "name": "Ägg"
+        }
+    },
+    {
+        "itemNumber": "AB006",
+        "price": 3.2,
+        "productType": {
+            "name": "Ägg"
+        }
+    },
+    {
+        "itemNumber": "AB007",
+        "price": 3.3,
+        "productType": {
+            "name": "Ägg"
+        }
+    },
+    {
+        "itemNumber": "AB008",
+        "price": 3.4,
+        "productType": {
+            "name": "Ägg"
+        }
+    },
+    {
+        "itemNumber": "AC009",
+        "price": 10.2,
+        "productType": {
+            "name": "Vetemjöl"
+        }
+    },
+    {
+        "itemNumber": "AC010",
+        "price": 14.3,
+        "productType": {
+            "name": "Vetemjöl"
+        }
+    },
+    {
+        "itemNumber": "AC011",
+        "price": 16,
+        "productType": {
+            "name": "Vetemjöl"
+        }
+    },
+    {
+        "itemNumber": "AC012",
+        "price": 18.7,
+        "productType": {
+            "name": "Vetemjöl"
+        }
+    },
+    {
+        "itemNumber": "AD013",
+        "price": 195.9,
+        "productType": {
+            "name": "Jäst"
+        }
+    },
+    {
+        "itemNumber": "AD014",
+        "price": 201.5,
+        "productType": {
+            "name": "Jäst"
+        }
+    },
+    {
+        "itemNumber": "AD015",
+        "price": 200,
+        "productType": {
+            "name": "Jäst"
+        }
+    },
+    {
+        "itemNumber": "AD016",
+        "price": 199.5,
+        "productType": {
+            "name": "Jäst"
+        }
+    },
+    {
+        "itemNumber": "AE017",
+        "price": 73.3,
+        "productType": {
+            "name": "Bakpulver"
+        }
+    },
+    {
+        "itemNumber": "AE018",
+        "price": 68.5,
+        "productType": {
+            "name": "Bakpulver"
+        }
+    },
+    {
+        "itemNumber": "AE019",
+        "price": 75.6,
+        "productType": {
+            "name": "Bakpulver"
+        }
+    },
+    {
+        "itemNumber": "AE020",
+        "price": 73.1,
+        "productType": {
+            "name": "Bakpulver"
+        }
+    },
+    {
+        "itemNumber": "AF021",
+        "price": 16.5,
+        "productType": {
+            "name": "Socker"
+        }
+    },
+    {
+        "itemNumber": "AF022",
+        "price": 14.6,
+        "productType": {
+            "name": "Socker"
+        }
+    },
+    {
+        "itemNumber": "AF023",
+        "price": 17.9,
+        "productType": {
+            "name": "Socker"
+        }
+    },
+    {
+        "itemNumber": "AF024",
+        "price": 16.5,
+        "productType": {
+            "name": "Socker"
+        }
+    },
+    {
+        "itemNumber": "AG025",
+        "price": 113.8,
+        "productType": {
+            "name": "Honung"
+        }
+    },
+    {
+        "itemNumber": "AG026",
+        "price": 123.5,
+        "productType": {
+            "name": "Honung"
+        }
+    },
+    {
+        "itemNumber": "AG027",
+        "price": 110.3,
+        "productType": {
+            "name": "Honung"
+        }
+    },
+    {
+        "itemNumber": "AG028",
+        "price": 115,
+        "productType": {
+            "name": "Honung"
+        }
+    },
+    {
+        "itemNumber": "AH029",
+        "price": 24.2,
+        "productType": {
+            "name": "Salt"
+        }
+    },
+    {
+        "itemNumber": "AH030",
+        "price": 23.8,
+        "productType": {
+            "name": "Salt"
+        }
+    },
+    {
+        "itemNumber": "AH031",
+        "price": 25.6,
+        "productType": {
+            "name": "Salt"
+        }
+    },
+    {
+        "itemNumber": "AH032",
+        "price": 24.3,
+        "productType": {
+            "name": "Salt"
+        }
+    },
+    {
+        "itemNumber": "AI033",
+        "price": 45,
+        "productType": {
+            "name": "Olja"
+        }
+    },
+    {
+        "itemNumber": "AI034",
+        "price": 44.5,
+        "productType": {
+            "name": "Olja"
+        }
+    },
+    {
+        "itemNumber": "AI035",
+        "price": 47.5,
+        "productType": {
+            "name": "Olja"
+        }
+    },
+    {
+        "itemNumber": "AI036",
+        "price": 44.5,
+        "productType": {
+            "name": "Olja"
+        }
+    },
+    {
+        "itemNumber": "AJ037",
+        "price": 65.9,
+        "productType": {
+            "name": "Grädde"
+        }
+    },
+    {
+        "itemNumber": "AJ038",
+        "price": 65.9,
+        "productType": {
+            "name": "Grädde"
+        }
+    },
+    {
+        "itemNumber": "AJ039",
+        "price": 66.7,
+        "productType": {
+            "name": "Grädde"
+        }
+    },
+    {
+        "itemNumber": "AJ040",
+        "price": 64.7,
+        "productType": {
+            "name": "Grädde"
+        }
+    },
+    {
+        "itemNumber": "AK041",
+        "price": 204.8,
+        "productType": {
+            "name": "Kakao"
+        }
+    },
+    {
+        "itemNumber": "AK042",
+        "price": 206.7,
+        "productType": {
+            "name": "Kakao"
+        }
+    },
+    {
+        "itemNumber": "AK043",
+        "price": 205.7,
+        "productType": {
+            "name": "Kakao"
+        }
+    },
+    {
+        "itemNumber": "AK044",
+        "price": 204.8,
+        "productType": {
+            "name": "Kakao"
+        }
+    }
+]

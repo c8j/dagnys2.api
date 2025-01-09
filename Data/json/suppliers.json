@@ -1,0 +1,454 @@
+[
+    {
+        "name": "Willys",
+        "contactName": "Per Olsson",
+        "email": "kundförsäljning@willys.se",
+        "addresses": [
+            {
+                "type": {
+                    "name": "Leverans"
+                },
+                "streetLine": "Storgatan 1",
+                "postalCode": "123 45",
+                "city": "Storstad"
+            },
+            {
+                "type": {
+                    "name": "Faktura"
+                },
+                "streetLine": "Storgatan 1",
+                "postalCode": "123 45",
+                "city": "Storstad"
+            }
+        ],
+        "phones": [
+            {
+                "type": {
+                    "name": "Kontor"
+                },
+                "number": "034-123456"
+            }
+        ],
+        "products": [
+            {
+                "itemNumber": "AA001",
+                "price": 14,
+                "productType": {
+                    "name": "Mjölk"
+                }
+            },
+            {
+                "itemNumber": "AB005",
+                "price": 3.5,
+                "productType": {
+                    "name": "Ägg"
+                }
+            },
+            {
+                "itemNumber": "AC009",
+                "price": 10.2,
+                "productType": {
+                    "name": "Vetemjöl"
+                }
+            },
+            {
+                "itemNumber": "AD013",
+                "price": 195.9,
+                "productType": {
+                    "name": "Jäst"
+                }
+            },
+            {
+                "itemNumber": "AE017",
+                "price": 73.3,
+                "productType": {
+                    "name": "Bakpulver"
+                }
+            },
+            {
+                "itemNumber": "AF021",
+                "price": 16.5,
+                "productType": {
+                    "name": "Socker"
+                }
+            },
+            {
+                "itemNumber": "AG025",
+                "price": 113.8,
+                "productType": {
+                    "name": "Honung"
+                }
+            },
+            {
+                "itemNumber": "AH029",
+                "price": 24.2,
+                "productType": {
+                    "name": "Salt"
+                }
+            },
+            {
+                "itemNumber": "AI033",
+                "price": 45,
+                "productType": {
+                    "name": "Olja"
+                }
+            },
+            {
+                "itemNumber": "AJ037",
+                "price": 65.9,
+                "productType": {
+                    "name": "Grädde"
+                }
+            },
+            {
+                "itemNumber": "AK041",
+                "price": 204.8,
+                "productType": {
+                    "name": "Kakao"
+                }
+            }
+        ]
+    },
+    {
+        "name": "ICA",
+        "contactName": "Anders Bengtsson",
+        "email": "kundleveranser@ica.se",
+        "addresses": [
+            {
+                "type": {
+                    "name": "Leverans"
+                },
+                "streetLine": "Storgatan 12",
+                "postalCode": "123 85",
+                "city": "Storstad"
+            },
+            {
+                "type": {
+                    "name": "Faktura"
+                },
+                "streetLine": "Östra Storgatan 15",
+                "postalCode": "124 55",
+                "city": "Storstad"
+            }
+        ],
+        "phones": [
+            {
+                "type": {
+                    "name": "Kontor"
+                },
+                "number": "034-8756471"
+            },
+            {
+                "type": {
+                    "name": "Mobil"
+                },
+                "number": "0768372192"
+            }
+        ],
+        "products": [
+            {
+                "itemNumber": "AA002",
+                "price": 17,
+                "productType": {
+                    "name": "Mjölk"
+                }
+            },
+            {
+                "itemNumber": "AB006",
+                "price": 3.2,
+                "productType": {
+                    "name": "Ägg"
+                }
+            },
+            {
+                "itemNumber": "AC010",
+                "price": 14.3,
+                "productType": {
+                    "name": "Vetemjöl"
+                }
+            },
+            {
+                "itemNumber": "AD014",
+                "price": 201.5,
+                "productType": {
+                    "name": "Jäst"
+                }
+            },
+            {
+                "itemNumber": "AE018",
+                "price": 68.5,
+                "productType": {
+                    "name": "Bakpulver"
+                }
+            },
+            {
+                "itemNumber": "AF022",
+                "price": 14.6,
+                "productType": {
+                    "name": "Socker"
+                }
+            },
+            {
+                "itemNumber": "AG026",
+                "price": 123.5,
+                "productType": {
+                    "name": "Honung"
+                }
+            },
+            {
+                "itemNumber": "AH030",
+                "price": 23.8,
+                "productType": {
+                    "name": "Salt"
+                }
+            },
+            {
+                "itemNumber": "AI034",
+                "price": 44.5,
+                "productType": {
+                    "name": "Olja"
+                }
+            },
+            {
+                "itemNumber": "AJ038",
+                "price": 65.9,
+                "productType": {
+                    "name": "Grädde"
+                }
+            },
+            {
+                "itemNumber": "AK042",
+                "price": 206.7,
+                "productType": {
+                    "name": "Kakao"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Coop",
+        "contactName": "Erika Jonsson",
+        "email": "leverans@coop.se",
+        "addresses": [
+            {
+                "type": {
+                    "name": "Leverans"
+                },
+                "streetLine": "Tunavägen 12",
+                "postalCode": "456 78",
+                "city": "Ystad"
+            },
+            {
+                "type": {
+                    "name": "Faktura"
+                },
+                "streetLine": "Tunavägen 2",
+                "postalCode": "456 77",
+                "city": "Ystad"
+            }
+        ],
+        "phones": [
+            {
+                "type": {
+                    "name": "Kontor"
+                },
+                "number": "038-49581723"
+            },
+            {
+                "type": {
+                    "name": "Mobil"
+                },
+                "number": "078746251"
+            }
+        ],
+        "products": [
+            {
+                "itemNumber": "AA003",
+                "price": 19,
+                "productType": {
+                    "name": "Mjölk"
+                }
+            },
+            {
+                "itemNumber": "AB007",
+                "price": 3.3,
+                "productType": {
+                    "name": "Ägg"
+                }
+            },
+            {
+                "itemNumber": "AC011",
+                "price": 16,
+                "productType": {
+                    "name": "Vetemjöl"
+                }
+            },
+            {
+                "itemNumber": "AD015",
+                "price": 200,
+                "productType": {
+                    "name": "Jäst"
+                }
+            },
+            {
+                "itemNumber": "AE019",
+                "price": 75.6,
+                "productType": {
+                    "name": "Bakpulver"
+                }
+            },
+            {
+                "itemNumber": "AF023",
+                "price": 17.9,
+                "productType": {
+                    "name": "Socker"
+                }
+            },
+            {
+                "itemNumber": "AG027",
+                "price": 110.3,
+                "productType": {
+                    "name": "Honung"
+                }
+            },
+            {
+                "itemNumber": "AH031",
+                "price": 25.6,
+                "productType": {
+                    "name": "Salt"
+                }
+            },
+            {
+                "itemNumber": "AI035",
+                "price": 47.5,
+                "productType": {
+                    "name": "Olja"
+                }
+            },
+            {
+                "itemNumber": "AJ039",
+                "price": 66.7,
+                "productType": {
+                    "name": "Grädde"
+                }
+            },
+            {
+                "itemNumber": "AK043",
+                "price": 205.7,
+                "productType": {
+                    "name": "Kakao"
+                }
+            }
+        ]
+    },
+    {
+        "name": "Lidl",
+        "contactName": "Elin Magnusson",
+        "email": "leverans@lidl.se",
+        "addresses": [
+            {
+                "type": {
+                    "name": "Leverans"
+                },
+                "streetLine": "Fältvägen 1",
+                "postalCode": "291 39",
+                "city": "Kristianstad"
+            },
+            {
+                "type": {
+                    "name": "Faktura"
+                },
+                "streetLine": "Vilansgatan 33",
+                "postalCode": "233 56",
+                "city": "Kristianstad"
+            }
+        ],
+        "phones": [
+            {
+                "type": {
+                    "name": "Kontor"
+                },
+                "number": "036-22736412"
+            }
+        ],
+        "products": [
+            {
+                "itemNumber": "AA004",
+                "price": 21,
+                "productType": {
+                    "name": "Mjölk"
+                }
+            },
+            {
+                "itemNumber": "AB008",
+                "price": 3.4,
+                "productType": {
+                    "name": "Ägg"
+                }
+            },
+            {
+                "itemNumber": "AC012",
+                "price": 18.7,
+                "productType": {
+                    "name": "Vetemjöl"
+                }
+            },
+            {
+                "itemNumber": "AD016",
+                "price": 199.5,
+                "productType": {
+                    "name": "Jäst"
+                }
+            },
+            {
+                "itemNumber": "AE020",
+                "price": 73.1,
+                "productType": {
+                    "name": "Bakpulver"
+                }
+            },
+            {
+                "itemNumber": "AF024",
+                "price": 16.5,
+                "productType": {
+                    "name": "Socker"
+                }
+            },
+            {
+                "itemNumber": "AG028",
+                "price": 115,
+                "productType": {
+                    "name": "Honung"
+                }
+            },
+            {
+                "itemNumber": "AH032",
+                "price": 24.3,
+                "productType": {
+                    "name": "Salt"
+                }
+            },
+            {
+                "itemNumber": "AI036",
+                "price": 44.5,
+                "productType": {
+                    "name": "Olja"
+                }
+            },
+            {
+                "itemNumber": "AJ040",
+                "price": 64.7,
+                "productType": {
+                    "name": "Grädde"
+                }
+            },
+            {
+                "itemNumber": "AK044",
+                "price": 204.8,
+                "productType": {
+                    "name": "Kakao"
+                }
+            }
+        ]
+    }
+]
