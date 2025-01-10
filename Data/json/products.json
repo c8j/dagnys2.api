@@ -1,310 +1,178 @@
 [
     {
         "itemNumber": "AA001",
-        "price": 14,
-        "productType": {
-            "name": "Mjölk"
-        }
+        "price": 14
     },
     {
         "itemNumber": "AA002",
-        "price": 17,
-        "productType": {
-            "name": "Mjölk"
-        }
+        "price": 17
     },
     {
         "itemNumber": "AA003",
-        "price": 19,
-        "productType": {
-            "name": "Mjölk"
-        }
+        "price": 19
     },
     {
         "itemNumber": "AA004",
-        "price": 21,
-        "productType": {
-            "name": "Mjölk"
-        }
+        "price": 21
     },
     {
         "itemNumber": "AB005",
-        "price": 3.5,
-        "productType": {
-            "name": "Ägg"
-        }
+        "price": 3.5
     },
     {
         "itemNumber": "AB006",
-        "price": 3.2,
-        "productType": {
-            "name": "Ägg"
-        }
+        "price": 3.2
     },
     {
         "itemNumber": "AB007",
-        "price": 3.3,
-        "productType": {
-            "name": "Ägg"
-        }
+        "price": 3.3
     },
     {
         "itemNumber": "AB008",
-        "price": 3.4,
-        "productType": {
-            "name": "Ägg"
-        }
+        "price": 3.4
     },
     {
         "itemNumber": "AC009",
-        "price": 10.2,
-        "productType": {
-            "name": "Vetemjöl"
-        }
+        "price": 10.2
     },
     {
         "itemNumber": "AC010",
-        "price": 14.3,
-        "productType": {
-            "name": "Vetemjöl"
-        }
+        "price": 14.3
     },
     {
         "itemNumber": "AC011",
-        "price": 16,
-        "productType": {
-            "name": "Vetemjöl"
-        }
+        "price": 16
     },
     {
         "itemNumber": "AC012",
-        "price": 18.7,
-        "productType": {
-            "name": "Vetemjöl"
-        }
+        "price": 18.7
     },
     {
         "itemNumber": "AD013",
-        "price": 195.9,
-        "productType": {
-            "name": "Jäst"
-        }
+        "price": 195.9
     },
     {
         "itemNumber": "AD014",
-        "price": 201.5,
-        "productType": {
-            "name": "Jäst"
-        }
+        "price": 201.5
     },
     {
         "itemNumber": "AD015",
-        "price": 200,
-        "productType": {
-            "name": "Jäst"
-        }
+        "price": 200
     },
     {
         "itemNumber": "AD016",
-        "price": 199.5,
-        "productType": {
-            "name": "Jäst"
-        }
+        "price": 199.5
     },
     {
         "itemNumber": "AE017",
-        "price": 73.3,
-        "productType": {
-            "name": "Bakpulver"
-        }
+        "price": 73.3
     },
     {
         "itemNumber": "AE018",
-        "price": 68.5,
-        "productType": {
-            "name": "Bakpulver"
-        }
+        "price": 68.5
     },
     {
         "itemNumber": "AE019",
-        "price": 75.6,
-        "productType": {
-            "name": "Bakpulver"
-        }
+        "price": 75.6
     },
     {
         "itemNumber": "AE020",
-        "price": 73.1,
-        "productType": {
-            "name": "Bakpulver"
-        }
+        "price": 73.1
     },
     {
         "itemNumber": "AF021",
-        "price": 16.5,
-        "productType": {
-            "name": "Socker"
-        }
+        "price": 16.5
     },
     {
         "itemNumber": "AF022",
-        "price": 14.6,
-        "productType": {
-            "name": "Socker"
-        }
+        "price": 14.6
     },
     {
         "itemNumber": "AF023",
-        "price": 17.9,
-        "productType": {
-            "name": "Socker"
-        }
+        "price": 17.9
     },
     {
         "itemNumber": "AF024",
-        "price": 16.5,
-        "productType": {
-            "name": "Socker"
-        }
+        "price": 16.5
     },
     {
         "itemNumber": "AG025",
-        "price": 113.8,
-        "productType": {
-            "name": "Honung"
-        }
+        "price": 113.8
     },
     {
         "itemNumber": "AG026",
-        "price": 123.5,
-        "productType": {
-            "name": "Honung"
-        }
+        "price": 123.5
     },
     {
         "itemNumber": "AG027",
-        "price": 110.3,
-        "productType": {
-            "name": "Honung"
-        }
+        "price": 110.3
     },
     {
         "itemNumber": "AG028",
-        "price": 115,
-        "productType": {
-            "name": "Honung"
-        }
+        "price": 115
     },
     {
         "itemNumber": "AH029",
-        "price": 24.2,
-        "productType": {
-            "name": "Salt"
-        }
+        "price": 24.2
     },
     {
         "itemNumber": "AH030",
-        "price": 23.8,
-        "productType": {
-            "name": "Salt"
-        }
+        "price": 23.8
     },
     {
         "itemNumber": "AH031",
-        "price": 25.6,
-        "productType": {
-            "name": "Salt"
-        }
+        "price": 25.6
     },
     {
         "itemNumber": "AH032",
-        "price": 24.3,
-        "productType": {
-            "name": "Salt"
-        }
+        "price": 24.3
     },
     {
         "itemNumber": "AI033",
-        "price": 45,
-        "productType": {
-            "name": "Olja"
-        }
+        "price": 45
     },
     {
         "itemNumber": "AI034",
-        "price": 44.5,
-        "productType": {
-            "name": "Olja"
-        }
+        "price": 44.5
     },
     {
         "itemNumber": "AI035",
-        "price": 47.5,
-        "productType": {
-            "name": "Olja"
-        }
+        "price": 47.5
     },
     {
         "itemNumber": "AI036",
-        "price": 44.5,
-        "productType": {
-            "name": "Olja"
-        }
+        "price": 44.5
     },
     {
         "itemNumber": "AJ037",
-        "price": 65.9,
-        "productType": {
-            "name": "Grädde"
-        }
+        "price": 65.9
     },
     {
         "itemNumber": "AJ038",
-        "price": 65.9,
-        "productType": {
-            "name": "Grädde"
-        }
+        "price": 65.9
     },
     {
         "itemNumber": "AJ039",
-        "price": 66.7,
-        "productType": {
-            "name": "Grädde"
-        }
+        "price": 66.7
     },
     {
         "itemNumber": "AJ040",
-        "price": 64.7,
-        "productType": {
-            "name": "Grädde"
-        }
+        "price": 64.7
     },
     {
         "itemNumber": "AK041",
-        "price": 204.8,
-        "productType": {
-            "name": "Kakao"
-        }
+        "price": 204.8
     },
     {
         "itemNumber": "AK042",
-        "price": 206.7,
-        "productType": {
-            "name": "Kakao"
-        }
+        "price": 206.7
     },
     {
         "itemNumber": "AK043",
-        "price": 205.7,
-        "productType": {
-            "name": "Kakao"
-        }
+        "price": 205.7
     },
     {
         "itemNumber": "AK044",
-        "price": 204.8,
-        "productType": {
-            "name": "Kakao"
-        }
+        "price": 204.8
     }
 ]

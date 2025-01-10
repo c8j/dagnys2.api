@@ -1,0 +1,42 @@
+[
+    {
+        "supplierID": 1,
+        "addressID": 1,
+        "addressTypeID": 1
+    },
+    {
+        "supplierID": 1,
+        "addressID": 1,
+        "addressTypeID": 2
+    },
+    {
+        "supplierID": 2,
+        "addressID": 2,
+        "addressTypeID": 1
+    },
+    {
+        "supplierID": 2,
+        "addressID": 3,
+        "addressTypeID": 2
+    },
+    {
+        "supplierID": 3,
+        "addressID": 4,
+        "addressTypeID": 1
+    },
+    {
+        "supplierID": 3,
+        "addressID": 5,
+        "addressTypeID": 2
+    },
+    {
+        "supplierID": 4,
+        "addressID": 6,
+        "addressTypeID": 1
+    },
+    {
+        "supplierID": 4,
+        "addressID": 7,
+        "addressTypeID": 2
+    }
+]

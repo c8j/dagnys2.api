@@ -1,0 +1,32 @@
+[
+    {
+        "supplierID": 1,
+        "phoneID": 1,
+        "phoneTypeID": 1
+    },
+    {
+        "supplierID": 2,
+        "phoneID": 2,
+        "phoneTypeID": 1
+    },
+    {
+        "supplierID": 2,
+        "phoneID": 3,
+        "phoneTypeID": 2
+    },
+    {
+        "supplierID": 3,
+        "phoneID": 4,
+        "phoneTypeID": 1
+    },
+    {
+        "supplierID": 3,
+        "phoneID": 5,
+        "phoneTypeID": 2
+    },
+    {
+        "supplierID": 4,
+        "phoneID": 6,
+        "phoneTypeID": 1
+    }
+]

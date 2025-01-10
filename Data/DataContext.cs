@@ -13,4 +13,7 @@ public class DataContext(DbContextOptions options) : DbContext(options)
     public DbSet<PhoneType> PhoneTypes { get; set; }
     public DbSet<Phone> Phones { get; set; }
     public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<SupplierAddress> SupplierAddresses { get; set; }
+    public DbSet<SupplierPhone> SupplierPhones { get; set; }
+    public DbSet<SupplierProduct> SupplierProducts { get; set; }
 }

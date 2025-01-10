@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace dagnys2.api.Entities;
 
+[Index(nameof(Email), IsUnique = true)]
 public class Supplier
 {
     public int ID { get; set; }
@@ -7,7 +10,7 @@ public class Supplier
     public string ContactName { get; set; }
     public string Email { get; set; }
 
-    public IList<Address> Addresses { get; set; }
-    public IList<Phone> Phones { get; set; }
-    public IList<Product> Products { get; set; }
+    public IList<SupplierAddress> SupplierAddresses { get; set; }
+    public IList<SupplierPhone> SupplierPhones { get; set; }
+    public IList<SupplierProduct> SupplierProducts { get; set; }
 }

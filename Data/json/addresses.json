@@ -1,0 +1,37 @@
+[
+    {
+        "streetLine": "Storgatan 1",
+        "postalCode": "123 45",
+        "city": "Storstad"
+    },
+    {
+        "streetLine": "Storgatan 12",
+        "postalCode": "123 85",
+        "city": "Storstad"
+    },
+    {
+        "streetLine": "Östra Storgatan 15",
+        "postalCode": "124 55",
+        "city": "Storstad"
+    },
+    {
+        "streetLine": "Tunavägen 12",
+        "postalCode": "456 78",
+        "city": "Ystad"
+    },
+    {
+        "streetLine": "Tunavägen 2",
+        "postalCode": "456 77",
+        "city": "Ystad"
+    },
+    {
+        "streetLine": "Fältvägen 1",
+        "postalCode": "291 39",
+        "city": "Kristianstad"
+    },
+    {
+        "streetLine": "Vilansgatan 33",
+        "postalCode": "233 56",
+        "city": "Kristianstad"
+    }
+]
