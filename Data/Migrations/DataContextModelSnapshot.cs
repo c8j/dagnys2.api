@@ -47,6 +47,9 @@ namespace dagnys2.api.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("AddressTypes");
                 });
 
@@ -74,6 +77,9 @@ namespace dagnys2.api.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("PhoneTypes");
                 });
@@ -108,6 +114,9 @@ namespace dagnys2.api.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("ProductTypes");
                 });

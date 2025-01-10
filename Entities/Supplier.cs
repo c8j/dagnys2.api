@@ -10,7 +10,7 @@ public class Supplier
     public string ContactName { get; set; }
     public string Email { get; set; }
 
-    public IList<SupplierAddress> SupplierAddresses { get; set; }
-    public IList<SupplierPhone> SupplierPhones { get; set; }
-    public IList<SupplierProduct> SupplierProducts { get; set; }
+    public IList<SupplierAddress> SupplierAddresses { get; set; } = [];
+    public IList<SupplierPhone> SupplierPhones { get; set; } = [];
+    public IList<SupplierProduct> SupplierProducts { get; set; } = [];
 }

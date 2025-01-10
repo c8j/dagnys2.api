@@ -6,5 +6,6 @@ public class Address
     public string StreetLine { get; set; }
     public string PostalCode { get; set; }
     public string City { get; set; }
-    public IList<SupplierAddress> SupplierAddresses { get; set; }
+
+    public IList<SupplierAddress> SupplierAddresses { get; set; } = [];
 }

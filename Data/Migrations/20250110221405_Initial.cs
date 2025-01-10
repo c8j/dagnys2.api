@@ -200,9 +200,27 @@ namespace dagnys2.api.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AddressTypes_Name",
+                table: "AddressTypes",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PhoneTypes_Name",
+                table: "PhoneTypes",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ItemNumber",
                 table: "Products",
                 column: "ItemNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductTypes_Name",
+                table: "ProductTypes",
+                column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(

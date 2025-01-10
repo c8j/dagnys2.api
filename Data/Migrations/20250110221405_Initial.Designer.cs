@@ -10,7 +10,7 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250110143224_Initial")]
+    [Migration("20250110221405_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -50,6 +50,9 @@ namespace dagnys2.api.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("AddressTypes");
                 });
 
@@ -77,6 +80,9 @@ namespace dagnys2.api.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("PhoneTypes");
                 });
@@ -111,6 +117,9 @@ namespace dagnys2.api.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("ProductTypes");
                 });
