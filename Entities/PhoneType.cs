@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace dagnys2.api.Entities;
 
-
+[Index(nameof(Name), IsUnique = true)]
 public class PhoneType
 {
     public int ID { get; set; }
