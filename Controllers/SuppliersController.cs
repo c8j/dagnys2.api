@@ -18,7 +18,7 @@ namespace dagnys2.api.Controllers
             var suppliers = await _dataContext.Suppliers
             .Include(context => context.SupplierAddresses)
             .Include(context => context.SupplierPhones)
-            .Include(context => context.SupplierProducts)
+            .Include(context => context.SupplierIngredients)
             .Select(supplier => new
             {
                 SupplierID = supplier.ID,
@@ -39,12 +39,12 @@ namespace dagnys2.api.Controllers
                     PhoneType = supplierPhones.PhoneType.Name,
                     supplierPhones.Phone.Number
                 }),
-                Products = supplier.SupplierProducts
-                .Select(supplierProduct => new
+                Ingredients = supplier.SupplierIngredients
+                .Select(supplierIngredient => new
                 {
-                    supplierProduct.Product.ItemNumber,
-                    ProductType = supplierProduct.ProductType.Name,
-                    supplierProduct.Product.Price
+                    supplierIngredient.Ingredient.ItemNumber,
+                    IngredientType = supplierIngredient.IngredientType.Name,
+                    supplierIngredient.Ingredient.Price
                 })
             })
             .AsSplitQuery()
@@ -59,7 +59,7 @@ namespace dagnys2.api.Controllers
             .Where(supplier => supplier.ID == id)
             .Include(context => context.SupplierAddresses)
             .Include(context => context.SupplierPhones)
-            .Include(context => context.SupplierProducts)
+            .Include(context => context.SupplierIngredients)
             .Select(supplier => new
             {
                 SupplierID = supplier.ID,
@@ -80,12 +80,12 @@ namespace dagnys2.api.Controllers
                     PhoneType = supplierPhones.PhoneType.Name,
                     supplierPhones.Phone.Number
                 }),
-                Products = supplier.SupplierProducts
-                .Select(supplierProduct => new
+                Ingredients = supplier.SupplierIngredients
+                .Select(supplierIngredient => new
                 {
-                    supplierProduct.Product.ItemNumber,
-                    ProductType = supplierProduct.ProductType.Name,
-                    supplierProduct.Product.Price
+                    supplierIngredient.Ingredient.ItemNumber,
+                    IngredientType = supplierIngredient.IngredientType.Name,
+                    supplierIngredient.Ingredient.Price
                 })
             })
             .AsSplitQuery()

@@ -1,6 +1,6 @@
 namespace dagnys2.api.ViewModels;
 
-public class ProductPost
+public class IngredientPostVM
 {
     public int SupplierID { get; set; }
     public string Type { get; set; }

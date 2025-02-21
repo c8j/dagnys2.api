@@ -1,0 +1,222 @@
+[
+    {
+        "supplierID": 1,
+        "ingredientID": 1,
+        "ingredientTypeID": 1
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 5,
+        "ingredientTypeID": 2
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 9,
+        "ingredientTypeID": 3
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 13,
+        "ingredientTypeID": 4
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 17,
+        "ingredientTypeID": 5
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 21,
+        "ingredientTypeID": 6
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 25,
+        "ingredientTypeID": 7
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 29,
+        "ingredientTypeID": 8
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 33,
+        "ingredientTypeID": 9
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 37,
+        "ingredientTypeID": 10
+    },
+    {
+        "supplierID": 1,
+        "ingredientID": 41,
+        "ingredientTypeID": 11
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 2,
+        "ingredientTypeID": 1
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 6,
+        "ingredientTypeID": 2
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 10,
+        "ingredientTypeID": 3
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 14,
+        "ingredientTypeID": 4
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 18,
+        "ingredientTypeID": 5
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 22,
+        "ingredientTypeID": 6
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 26,
+        "ingredientTypeID": 7
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 30,
+        "ingredientTypeID": 8
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 34,
+        "ingredientTypeID": 9
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 38,
+        "ingredientTypeID": 10
+    },
+    {
+        "supplierID": 2,
+        "ingredientID": 42,
+        "ingredientTypeID": 11
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 3,
+        "ingredientTypeID": 1
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 7,
+        "ingredientTypeID": 2
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 11,
+        "ingredientTypeID": 3
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 15,
+        "ingredientTypeID": 4
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 19,
+        "ingredientTypeID": 5
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 23,
+        "ingredientTypeID": 6
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 27,
+        "ingredientTypeID": 7
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 31,
+        "ingredientTypeID": 8
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 35,
+        "ingredientTypeID": 9
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 39,
+        "ingredientTypeID": 10
+    },
+    {
+        "supplierID": 3,
+        "ingredientID": 43,
+        "ingredientTypeID": 11
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 4,
+        "ingredientTypeID": 1
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 8,
+        "ingredientTypeID": 2
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 12,
+        "ingredientTypeID": 3
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 16,
+        "ingredientTypeID": 4
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 20,
+        "ingredientTypeID": 5
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 24,
+        "ingredientTypeID": 6
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 28,
+        "ingredientTypeID": 7
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 32,
+        "ingredientTypeID": 8
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 36,
+        "ingredientTypeID": 9
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 40,
+        "ingredientTypeID": 10
+    },
+    {
+        "supplierID": 4,
+        "ingredientID": 44,
+        "ingredientTypeID": 11
+    }
+]

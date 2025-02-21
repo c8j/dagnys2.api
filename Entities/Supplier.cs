@@ -12,5 +12,5 @@ public class Supplier
 
     public IList<SupplierAddress> SupplierAddresses { get; set; } = [];
     public IList<SupplierPhone> SupplierPhones { get; set; } = [];
-    public IList<SupplierProduct> SupplierProducts { get; set; } = [];
+    public IList<SupplierIngredient> SupplierIngredients { get; set; } = [];
 }

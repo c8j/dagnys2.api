@@ -10,8 +10,8 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250110221405_Initial")]
-    partial class Initial
+    [Migration("20250221182035_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,43 @@ namespace dagnys2.api.Data.Migrations
                     b.ToTable("AddressTypes");
                 });
 
+            modelBuilder.Entity("dagnys2.api.Entities.Ingredient", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ItemNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ItemNumber")
+                        .IsUnique();
+
+                    b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("dagnys2.api.Entities.IngredientType", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("IngredientTypes");
+                });
+
             modelBuilder.Entity("dagnys2.api.Entities.Phone", b =>
                 {
                     b.Property<int>("ID")
@@ -85,43 +122,6 @@ namespace dagnys2.api.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("PhoneTypes");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.Product", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ItemNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ItemNumber")
-                        .IsUnique();
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.ProductType", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.Supplier", b =>
@@ -167,6 +167,27 @@ namespace dagnys2.api.Data.Migrations
                     b.ToTable("SupplierAddresses");
                 });
 
+            modelBuilder.Entity("dagnys2.api.Entities.SupplierIngredient", b =>
+                {
+                    b.Property<int>("SupplierID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IngredientID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IngredientTypeID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("SupplierID", "IngredientID", "IngredientTypeID");
+
+                    b.HasIndex("IngredientID")
+                        .IsUnique();
+
+                    b.HasIndex("IngredientTypeID");
+
+                    b.ToTable("SupplierIngredients");
+                });
+
             modelBuilder.Entity("dagnys2.api.Entities.SupplierPhone", b =>
                 {
                     b.Property<int>("SupplierID")
@@ -185,27 +206,6 @@ namespace dagnys2.api.Data.Migrations
                     b.HasIndex("PhoneTypeID");
 
                     b.ToTable("SupplierPhones");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.SupplierProduct", b =>
-                {
-                    b.Property<int>("SupplierID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductTypeID")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("SupplierID", "ProductID", "ProductTypeID");
-
-                    b.HasIndex("ProductID")
-                        .IsUnique();
-
-                    b.HasIndex("ProductTypeID");
-
-                    b.ToTable("SupplierProducts");
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.SupplierAddress", b =>
@@ -231,6 +231,33 @@ namespace dagnys2.api.Data.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("AddressType");
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("dagnys2.api.Entities.SupplierIngredient", b =>
+                {
+                    b.HasOne("dagnys2.api.Entities.Ingredient", "Ingredient")
+                        .WithOne("SupplierIngredient")
+                        .HasForeignKey("dagnys2.api.Entities.SupplierIngredient", "IngredientID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("dagnys2.api.Entities.IngredientType", "IngredientType")
+                        .WithMany("SupplierIngredients")
+                        .HasForeignKey("IngredientTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("dagnys2.api.Entities.Supplier", "Supplier")
+                        .WithMany("SupplierIngredients")
+                        .HasForeignKey("SupplierID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ingredient");
+
+                    b.Navigation("IngredientType");
 
                     b.Navigation("Supplier");
                 });
@@ -262,33 +289,6 @@ namespace dagnys2.api.Data.Migrations
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("dagnys2.api.Entities.SupplierProduct", b =>
-                {
-                    b.HasOne("dagnys2.api.Entities.Product", "Product")
-                        .WithOne("SupplierProduct")
-                        .HasForeignKey("dagnys2.api.Entities.SupplierProduct", "ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dagnys2.api.Entities.ProductType", "ProductType")
-                        .WithMany("SupplierProducts")
-                        .HasForeignKey("ProductTypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dagnys2.api.Entities.Supplier", "Supplier")
-                        .WithMany("SupplierProducts")
-                        .HasForeignKey("SupplierID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("ProductType");
-
-                    b.Navigation("Supplier");
-                });
-
             modelBuilder.Entity("dagnys2.api.Entities.Address", b =>
                 {
                     b.Navigation("SupplierAddresses");
@@ -297,6 +297,16 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.AddressType", b =>
                 {
                     b.Navigation("SupplierAddresses");
+                });
+
+            modelBuilder.Entity("dagnys2.api.Entities.Ingredient", b =>
+                {
+                    b.Navigation("SupplierIngredient");
+                });
+
+            modelBuilder.Entity("dagnys2.api.Entities.IngredientType", b =>
+                {
+                    b.Navigation("SupplierIngredients");
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.Phone", b =>
@@ -309,23 +319,13 @@ namespace dagnys2.api.Data.Migrations
                     b.Navigation("SupplierPhones");
                 });
 
-            modelBuilder.Entity("dagnys2.api.Entities.Product", b =>
-                {
-                    b.Navigation("SupplierProduct");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.ProductType", b =>
-                {
-                    b.Navigation("SupplierProducts");
-                });
-
             modelBuilder.Entity("dagnys2.api.Entities.Supplier", b =>
                 {
                     b.Navigation("SupplierAddresses");
 
-                    b.Navigation("SupplierPhones");
+                    b.Navigation("SupplierIngredients");
 
-                    b.Navigation("SupplierProducts");
+                    b.Navigation("SupplierPhones");
                 });
 #pragma warning restore 612, 618
         }

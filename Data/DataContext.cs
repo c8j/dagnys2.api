@@ -6,8 +6,8 @@ namespace dagnys2.api.Data;
 
 public class DataContext(DbContextOptions options) : DbContext(options)
 {
-    public DbSet<ProductType> ProductTypes { get; set; }
-    public DbSet<Product> Products { get; set; }
+    public DbSet<IngredientType> IngredientTypes { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
     public DbSet<AddressType> AddressTypes { get; set; }
     public DbSet<Address> Addresses { get; set; }
     public DbSet<PhoneType> PhoneTypes { get; set; }
@@ -15,13 +15,13 @@ public class DataContext(DbContextOptions options) : DbContext(options)
     public DbSet<Supplier> Suppliers { get; set; }
     public DbSet<SupplierAddress> SupplierAddresses { get; set; }
     public DbSet<SupplierPhone> SupplierPhones { get; set; }
-    public DbSet<SupplierProduct> SupplierProducts { get; set; }
+    public DbSet<SupplierIngredient> SupplierIngredients { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<SupplierAddress>()
+        /* modelBuilder.Entity<SupplierAddress>()
             .HasOne(e => e.Address)
             .WithMany(e => e.SupplierAddresses)
             .HasForeignKey(e => e.AddressID);
@@ -51,19 +51,19 @@ public class DataContext(DbContextOptions options) : DbContext(options)
             .WithMany(e => e.SupplierPhones)
             .HasForeignKey(e => e.SupplierID);
 
-        modelBuilder.Entity<SupplierProduct>()
-            .HasOne(e => e.Product)
-            .WithOne(e => e.SupplierProduct)
-            .HasForeignKey<SupplierProduct>(e => e.ProductID);
+        modelBuilder.Entity<SupplierIngredient>()
+            .HasOne(e => e.Ingredient)
+            .WithOne(e => e.SupplierIngredient)
+            .HasForeignKey<SupplierIngredient>(e => e.IngredientID);
 
-        modelBuilder.Entity<SupplierProduct>()
-            .HasOne(e => e.ProductType)
-            .WithMany(e => e.SupplierProducts)
-            .HasForeignKey(e => e.ProductTypeID);
+        modelBuilder.Entity<SupplierIngredient>()
+            .HasOne(e => e.IngredientType)
+            .WithMany(e => e.SupplierIngredients)
+            .HasForeignKey(e => e.IngredientTypeID);
 
-        modelBuilder.Entity<SupplierProduct>()
+        modelBuilder.Entity<SupplierIngredient>()
             .HasOne(e => e.Supplier)
-            .WithMany(e => e.SupplierProducts)
-            .HasForeignKey(e => e.SupplierID);
+            .WithMany(e => e.SupplierIngredients)
+            .HasForeignKey(e => e.SupplierID); */
     }
 }
