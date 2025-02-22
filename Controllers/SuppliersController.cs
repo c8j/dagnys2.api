@@ -74,7 +74,7 @@ namespace dagnys2.api.Controllers
                     ID = supplierIngredient.IngredientID,
                     ItemNumber = supplierIngredient.Ingredient.ItemNumber,
                     Name = supplierIngredient.Ingredient.Name,
-                    Price = supplierIngredient.Price
+                    PriceKrPerKg = supplierIngredient.PriceKrPerKg
                 }).ToList()
             })
             .AsSplitQuery()

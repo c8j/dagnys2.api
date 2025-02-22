@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -36,6 +37,20 @@ namespace dagnys2.api.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AddressTypes", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Batches",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ManufactureDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    ExpirationDate = table.Column<DateOnly>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Batches", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,6 +110,22 @@ namespace dagnys2.api.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    WeightInGrams = table.Column<int>(type: "INTEGER", nullable: false),
+                    PriceKrPerUnit = table.Column<decimal>(type: "TEXT", nullable: false),
+                    AmountInPackage = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EntityAddresses",
                 columns: table => new
                 {
@@ -131,7 +162,7 @@ namespace dagnys2.api.Data.Migrations
                 {
                     SupplierID = table.Column<int>(type: "INTEGER", nullable: false),
                     IngredientID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    PriceKrPerKg = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -181,6 +212,31 @@ namespace dagnys2.api.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProductBatches",
+                columns: table => new
+                {
+                    ProductID = table.Column<int>(type: "INTEGER", nullable: false),
+                    BatchID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Amount = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductBatches", x => new { x.BatchID, x.ProductID });
+                    table.ForeignKey(
+                        name: "FK_ProductBatches_Batches_BatchID",
+                        column: x => x.BatchID,
+                        principalTable: "Batches",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductBatches_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AddressTypes_Name",
                 table: "AddressTypes",
@@ -226,6 +282,11 @@ namespace dagnys2.api.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductBatches_ProductID",
+                table: "ProductBatches",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_SupplierIngredients_IngredientID",
                 table: "SupplierIngredients",
                 column: "IngredientID");
@@ -241,6 +302,9 @@ namespace dagnys2.api.Data.Migrations
                 name: "EntityPhones");
 
             migrationBuilder.DropTable(
+                name: "ProductBatches");
+
+            migrationBuilder.DropTable(
                 name: "SupplierIngredients");
 
             migrationBuilder.DropTable(
@@ -254,6 +318,12 @@ namespace dagnys2.api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Phones");
+
+            migrationBuilder.DropTable(
+                name: "Batches");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Entities");

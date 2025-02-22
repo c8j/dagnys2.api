@@ -6,17 +6,20 @@ namespace dagnys2.api.Data;
 
 public class DataContext(DbContextOptions options) : DbContext(options)
 {
-    public DbSet<Ingredient> Ingredients { get; set; }
-    public DbSet<AddressType> AddressTypes { get; set; }
     public DbSet<Address> Addresses { get; set; }
-    public DbSet<PhoneType> PhoneTypes { get; set; }
-    public DbSet<Phone> Phones { get; set; }
-    public DbSet<Entity> Entities { get; set; }
-    public DbSet<Supplier> Suppliers { get; set; }
+    public DbSet<AddressType> AddressTypes { get; set; }
+    public DbSet<Batch> Batches { get; set; }
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<Entity> Entities { get; set; }
     public DbSet<EntityAddress> EntityAddresses { get; set; }
     public DbSet<EntityPhone> EntityPhones { get; set; }
+    public DbSet<Ingredient> Ingredients { get; set; }
+    public DbSet<Phone> Phones { get; set; }
+    public DbSet<PhoneType> PhoneTypes { get; set; }
+    public DbSet<ProductBatch> ProductBatches { get; set; }
+    public DbSet<Product> Products { get; set; }
     public DbSet<SupplierIngredient> SupplierIngredients { get; set; }
+    public DbSet<Supplier> Suppliers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -36,5 +39,11 @@ public class DataContext(DbContextOptions options) : DbContext(options)
         .HasMany(s => s.Ingredients)
         .WithMany(i => i.Suppliers)
         .UsingEntity<SupplierIngredient>();
+
+        modelBuilder.Entity<Batch>()
+        .HasMany(b => b.Products)
+        .WithMany(p => p.Batches)
+        .UsingEntity<ProductBatch>();
+
     }
 }

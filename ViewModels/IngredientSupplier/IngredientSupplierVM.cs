@@ -4,5 +4,5 @@ public record class IngredientSupplierVM
 {
     public int SupplierID { get; init; }
     public string SupplierName { get; init; }
-    public decimal Price { get; init; }
+    public decimal PriceKrPerKg { get; init; }
 }

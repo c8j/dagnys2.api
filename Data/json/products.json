@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Solrosbullar",
+        "weightInGrams": 70,
+        "priceKrPerUnit": 30,
+        "amountInPackage": 3
+    },
+    {
+        "name": "Kanelbullar",
+        "weightInGrams": 95,
+        "priceKrPerUnit": 60,
+        "amountInPackage": 5
+    },
+    {
+        "name": "Wienerbröd",
+        "weightInGrams": 80,
+        "priceKrPerUnit": 9.95,
+        "amountInPackage": 1
+    },
+    {
+        "name": "Saffransbullar",
+        "weightInGrams": 55,
+        "priceKrPerUnit": 40,
+        "amountInPackage": 8
+    },
+    {
+        "name": "Semlor",
+        "weightInGrams": 300,
+        "priceKrPerUnit": 55,
+        "amountInPackage": 2
+    }
+]

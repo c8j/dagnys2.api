@@ -54,7 +54,7 @@ namespace dagnys2.api.Controllers
                     {
                         SupplierID = si.SupplierID,
                         SupplierName = si.Supplier.Name,
-                        Price = si.Price
+                        PriceKrPerKg = si.PriceKrPerKg
                     }).ToList()
                 });
         }
@@ -115,7 +115,7 @@ namespace dagnys2.api.Controllers
                 {
                     IngredientID = ingredient.ID,
                     SupplierID = supplierVM.SupplierID,
-                    Price = supplierVM.Price
+                    PriceKrPerKg = supplierVM.PriceKrPerKg
                 };
 
                 _dataContext.Add(newSupplierIngredient);
@@ -140,7 +140,7 @@ namespace dagnys2.api.Controllers
 
             if (supplierIngredient is null) return NotFound($"Kunde inte hitta någon ingrediens med id {id} som säljs av leverantör med id {ingredientPricePatchVM.SupplierID}.");
 
-            supplierIngredient.Price = ingredientPricePatchVM.Price;
+            supplierIngredient.PriceKrPerKg = ingredientPricePatchVM.PriceKrPerKg;
             await _dataContext.SaveChangesAsync();
             return NoContent();
         }
