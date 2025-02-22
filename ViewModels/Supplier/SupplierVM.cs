@@ -10,5 +10,5 @@ public record SupplierVM
     public string Email { get; init; }
     public ICollection<AddressVM> Addresses { get; init; }
     public ICollection<PhoneVM> Phones { get; init; }
-    public ICollection<SupplierIngredientVM> Ingredients { get; init; }
+    public ICollection<SupplierIngredientVM> Products { get; init; }
 }

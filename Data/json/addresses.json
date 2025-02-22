@@ -33,5 +33,25 @@
         "streetLine": "Vilansgatan 33",
         "postalCode": "233 56",
         "city": "Kristianstad"
+    },
+    {
+        "streetLine": "Sollentunaholmsv. 9",
+        "postalCode": "192 78",
+        "city": "Sollentuna"
+    },
+    {
+        "streetLine": "Box 103",
+        "postalCode": "597 22",
+        "city": "Åtvidaberg"
+    },
+    {
+        "streetLine": "Örsätter, Industrigallerian, Port 7",
+        "postalCode": "597 94",
+        "city": "Åtvidaberg"
+    },
+    {
+        "streetLine": "Mediavägen 2",
+        "postalCode": "135 48",
+        "city": "Tyresö"
     }
 ]

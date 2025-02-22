@@ -1,22 +1,17 @@
 [
     {
-        "name": "Willys",
-        "contactName": "Per Olsson",
-        "email": "kundförsäljning@willys.se"
+        "name": "KåKå Stockholm AB",
+        "contactName": "Stefan Berg",
+        "email": "info@kaka.se"
     },
     {
-        "name": "ICA",
-        "contactName": "Anders Bengtsson",
-        "email": "kundleveranser@ica.se"
+        "name": "Åsö",
+        "contactName": "Linda Johansson",
+        "email": "info@aso.se"
     },
     {
-        "name": "Coop",
-        "contactName": "Erika Jonsson",
-        "email": "leverans@coop.se"
-    },
-    {
-        "name": "Lidl",
-        "contactName": "Elin Magnusson",
-        "email": "leverans@lidl.se"
+        "name": "Kobia AB",
+        "contactName": "Malin Eklöf",
+        "email": "order@kobia.se"
     }
 ]

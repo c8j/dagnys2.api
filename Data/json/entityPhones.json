@@ -28,5 +28,30 @@
         "entityID": 4,
         "phoneID": 6,
         "phoneTypeID": 1
+    },
+    {
+        "entityID": 5,
+        "phoneID": 7,
+        "phoneTypeID": 1
+    },
+    {
+        "entityID": 6,
+        "phoneID": 8,
+        "phoneTypeID": 1
+    },
+    {
+        "entityID": 6,
+        "phoneID": 9,
+        "phoneTypeID": 2
+    },
+    {
+        "entityID": 7,
+        "phoneID": 10,
+        "phoneTypeID": 1
+    },
+    {
+        "entityID": 7,
+        "phoneID": 11,
+        "phoneTypeID": 2
     }
 ]

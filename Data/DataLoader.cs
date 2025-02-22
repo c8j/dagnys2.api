@@ -23,6 +23,7 @@ public static class DataLoader
             dataContext.Phones.Any() ||
             dataContext.PhoneTypes.Any() ||
             dataContext.Ingredients.Any() ||
+            dataContext.Customers.Any() ||
             dataContext.Suppliers.Any() ||
             dataContext.EntityAddresses.Any() ||
             dataContext.EntityPhones.Any() ||
@@ -34,6 +35,7 @@ public static class DataLoader
         var phones = JsonSerializer.Deserialize<List<Phone>>(File.ReadAllText("Data/json/phones.json"), Options);
         var phoneTypes = JsonSerializer.Deserialize<List<PhoneType>>(File.ReadAllText("Data/json/phoneTypes.json"), Options);
         var ingredients = JsonSerializer.Deserialize<List<Ingredient>>(File.ReadAllText("Data/json/ingredients.json"), Options);
+        var customers = JsonSerializer.Deserialize<List<Customer>>(File.ReadAllText("Data/json/customers.json"), Options);
         var suppliers = JsonSerializer.Deserialize<List<Supplier>>(File.ReadAllText("Data/json/suppliers.json"), Options);
         var entityAddresses = JsonSerializer.Deserialize<List<EntityAddress>>(File.ReadAllText("Data/json/entityAddresses.json"), Options);
         var entityPhones = JsonSerializer.Deserialize<List<EntityPhone>>(File.ReadAllText("Data/json/entityPhones.json"), Options);
@@ -45,6 +47,7 @@ public static class DataLoader
             phones is not null && phones.Count > 0 &&
             phoneTypes is not null && phoneTypes.Count > 0 &&
             ingredients is not null && ingredients.Count > 0 &&
+            customers is not null && customers.Count > 0 &&
             suppliers is not null && suppliers.Count > 0 &&
             entityAddresses is not null && entityAddresses.Count > 0 &&
             entityPhones is not null && entityPhones.Count > 0 &&
@@ -56,6 +59,7 @@ public static class DataLoader
             dataContext.PhoneTypes.AddRange(phoneTypes);
             dataContext.Phones.AddRange(phones);
             dataContext.Ingredients.AddRange(ingredients);
+            dataContext.Customers.AddRange(customers);
             dataContext.Suppliers.AddRange(suppliers);
             await dataContext.SaveChangesAsync();
             dataContext.EntityAddresses.AddRange(entityAddresses);

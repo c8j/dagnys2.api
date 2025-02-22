@@ -38,5 +38,35 @@
         "entityID": 4,
         "addressID": 7,
         "addressTypeID": 2
+    },
+    {
+        "entityID": 5,
+        "addressID": 8,
+        "addressTypeID": 1
+    },
+    {
+        "entityID": 5,
+        "addressID": 8,
+        "addressTypeID": 2
+    },
+    {
+        "entityID": 6,
+        "addressID": 9,
+        "addressTypeID": 2
+    },
+    {
+        "entityID": 6,
+        "addressID": 10,
+        "addressTypeID": 1
+    },
+    {
+        "entityID": 7,
+        "addressID": 11,
+        "addressTypeID": 1
+    },
+    {
+        "entityID": 7,
+        "addressID": 11,
+        "addressTypeID": 2
     }
 ]

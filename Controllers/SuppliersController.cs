@@ -67,7 +67,7 @@ namespace dagnys2.api.Controllers
                     Number = supplierPhone.Phone.Number
                 })
                 .ToList(),
-                Ingredients = supplier.SupplierIngredients
+                Products = supplier.SupplierIngredients
                 .Select(supplierIngredient => new
                 SupplierIngredientVM
                 {

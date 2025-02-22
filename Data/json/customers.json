@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Willys",
+        "contactName": "Per Olsson",
+        "email": "kundförsäljning@willys.se"
+    },
+    {
+        "name": "ICA",
+        "contactName": "Anders Bengtsson",
+        "email": "kundleveranser@ica.se"
+    },
+    {
+        "name": "Coop",
+        "contactName": "Erika Jonsson",
+        "email": "leverans@coop.se"
+    },
+    {
+        "name": "Lidl",
+        "contactName": "Elin Magnusson",
+        "email": "leverans@lidl.se"
+    }
+]
