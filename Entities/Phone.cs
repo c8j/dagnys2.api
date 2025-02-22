@@ -5,6 +5,6 @@ public record Phone
     public int ID { get; set; }
     public string Number { get; set; }
 
-    public ICollection<Supplier> Suppliers { get; } = [];
-    public ICollection<SupplierPhone> SupplierPhones { get; } = [];
+    public ICollection<Entity> Entities { get; } = [];
+    public ICollection<EntityPhone> EntityPhones { get; } = [];
 }

@@ -24,8 +24,8 @@ public static class DataLoader
             dataContext.PhoneTypes.Any() ||
             dataContext.Ingredients.Any() ||
             dataContext.Suppliers.Any() ||
-            dataContext.SupplierAddresses.Any() ||
-            dataContext.SupplierPhones.Any() ||
+            dataContext.EntityAddresses.Any() ||
+            dataContext.EntityPhones.Any() ||
             dataContext.SupplierIngredients.Any()
         ) return;
 
@@ -35,8 +35,8 @@ public static class DataLoader
         var phoneTypes = JsonSerializer.Deserialize<List<PhoneType>>(File.ReadAllText("Data/json/phoneTypes.json"), Options);
         var ingredients = JsonSerializer.Deserialize<List<Ingredient>>(File.ReadAllText("Data/json/ingredients.json"), Options);
         var suppliers = JsonSerializer.Deserialize<List<Supplier>>(File.ReadAllText("Data/json/suppliers.json"), Options);
-        var supplierAddresses = JsonSerializer.Deserialize<List<SupplierAddress>>(File.ReadAllText("Data/json/supplierAddresses.json"), Options);
-        var supplierPhones = JsonSerializer.Deserialize<List<SupplierPhone>>(File.ReadAllText("Data/json/supplierPhones.json"), Options);
+        var entityAddresses = JsonSerializer.Deserialize<List<EntityAddress>>(File.ReadAllText("Data/json/entityAddresses.json"), Options);
+        var entityPhones = JsonSerializer.Deserialize<List<EntityPhone>>(File.ReadAllText("Data/json/entityPhones.json"), Options);
         var supplierIngredients = JsonSerializer.Deserialize<List<SupplierIngredient>>(File.ReadAllText("Data/json/supplierIngredients.json"), Options);
 
         if (
@@ -46,8 +46,8 @@ public static class DataLoader
             phoneTypes is not null && phoneTypes.Count > 0 &&
             ingredients is not null && ingredients.Count > 0 &&
             suppliers is not null && suppliers.Count > 0 &&
-            supplierAddresses is not null && supplierAddresses.Count > 0 &&
-            supplierPhones is not null && supplierPhones.Count > 0 &&
+            entityAddresses is not null && entityAddresses.Count > 0 &&
+            entityPhones is not null && entityPhones.Count > 0 &&
             supplierIngredients is not null && supplierIngredients.Count > 0
             )
         {
@@ -58,8 +58,8 @@ public static class DataLoader
             dataContext.Ingredients.AddRange(ingredients);
             dataContext.Suppliers.AddRange(suppliers);
             await dataContext.SaveChangesAsync();
-            dataContext.SupplierAddresses.AddRange(supplierAddresses);
-            dataContext.SupplierPhones.AddRange(supplierPhones);
+            dataContext.EntityAddresses.AddRange(entityAddresses);
+            dataContext.EntityPhones.AddRange(entityPhones);
             dataContext.SupplierIngredients.AddRange(supplierIngredients);
             await dataContext.SaveChangesAsync();
         }

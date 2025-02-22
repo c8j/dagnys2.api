@@ -1,31 +1,31 @@
 [
     {
-        "supplierID": 1,
+        "entityID": 1,
         "phoneID": 1,
         "phoneTypeID": 1
     },
     {
-        "supplierID": 2,
+        "entityID": 2,
         "phoneID": 2,
         "phoneTypeID": 1
     },
     {
-        "supplierID": 2,
+        "entityID": 2,
         "phoneID": 3,
         "phoneTypeID": 2
     },
     {
-        "supplierID": 3,
+        "entityID": 3,
         "phoneID": 4,
         "phoneTypeID": 1
     },
     {
-        "supplierID": 3,
+        "entityID": 3,
         "phoneID": 5,
         "phoneTypeID": 2
     },
     {
-        "supplierID": 4,
+        "entityID": 4,
         "phoneID": 6,
         "phoneTypeID": 1
     }

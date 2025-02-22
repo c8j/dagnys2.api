@@ -7,5 +7,5 @@ public record AddressType
 {
     public int ID { get; set; }
     public string Name { get; set; }
-    public ICollection<SupplierAddress> SupplierAddresses { get; } = [];
+    public ICollection<EntityAddress> EntityAddresses { get; } = [];
 }

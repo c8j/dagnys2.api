@@ -1,9 +1,5 @@
-using System.Net;
-
 using dagnys2.api.Data;
 using dagnys2.api.ViewModels.Address;
-using dagnys2.api.ViewModels.Ingredient;
-using dagnys2.api.ViewModels.IngredientSupplier;
 using dagnys2.api.ViewModels.Phone;
 using dagnys2.api.ViewModels.Supplier;
 
@@ -42,8 +38,8 @@ namespace dagnys2.api.Controllers
         {
             var supplier = await _dataContext.Suppliers
             .Where(supplier => supplier.ID == id)
-            .Include(context => context.SupplierAddresses)
-            .Include(context => context.SupplierPhones)
+            .Include(context => context.EntityAddresses)
+            .Include(context => context.EntityPhones)
             .Include(context => context.SupplierIngredients)
             .Select(supplier => new
             SupplierVM
@@ -51,7 +47,7 @@ namespace dagnys2.api.Controllers
                 Name = supplier.Name,
                 ContactName = supplier.ContactName,
                 Email = supplier.Email,
-                Addresses = supplier.SupplierAddresses
+                Addresses = supplier.EntityAddresses
                 .Select(supplierAddress => new
                 AddressVM
                 {
@@ -62,7 +58,7 @@ namespace dagnys2.api.Controllers
                     City = supplierAddress.Address.City
                 })
                 .ToList(),
-                Phones = supplier.SupplierPhones
+                Phones = supplier.EntityPhones
                 .Select(supplierPhone => new
                 PhoneVM
                 {

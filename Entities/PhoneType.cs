@@ -8,5 +8,5 @@ public record PhoneType
     public int ID { get; set; }
     public string Name { get; set; }
 
-    public ICollection<SupplierPhone> SupplierPhones { get; } = [];
+    public ICollection<EntityPhone> EntityPhones { get; } = [];
 }

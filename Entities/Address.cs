@@ -7,6 +7,6 @@ public record Address
     public string PostalCode { get; set; }
     public string City { get; set; }
 
-    public ICollection<Supplier> Suppliers { get; } = [];
-    public ICollection<SupplierAddress> SupplierAddresses { get; } = [];
+    public ICollection<Entity> Entities { get; } = [];
+    public ICollection<EntityAddress> EntityAddresses { get; } = [];
 }
