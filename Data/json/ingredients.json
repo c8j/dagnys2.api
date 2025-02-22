@@ -1,178 +1,46 @@
 [
     {
         "itemNumber": "AA001",
-        "price": 14
+        "name": "Mjölk"
     },
     {
         "itemNumber": "AA002",
-        "price": 17
+        "name": "Ägg"
     },
     {
         "itemNumber": "AA003",
-        "price": 19
+        "name": "Vetemjöl"
     },
     {
         "itemNumber": "AA004",
-        "price": 21
+        "name": "Jäst"
     },
     {
         "itemNumber": "AB005",
-        "price": 3.5
+        "name": "Bakpulver"
     },
     {
         "itemNumber": "AB006",
-        "price": 3.2
+        "name": "Socker"
     },
     {
         "itemNumber": "AB007",
-        "price": 3.3
+        "name": "Honung"
     },
     {
         "itemNumber": "AB008",
-        "price": 3.4
+        "name": "Salt"
     },
     {
         "itemNumber": "AC009",
-        "price": 10.2
+        "name": "Olja"
     },
     {
         "itemNumber": "AC010",
-        "price": 14.3
+        "name": "Grädde"
     },
     {
         "itemNumber": "AC011",
-        "price": 16
-    },
-    {
-        "itemNumber": "AC012",
-        "price": 18.7
-    },
-    {
-        "itemNumber": "AD013",
-        "price": 195.9
-    },
-    {
-        "itemNumber": "AD014",
-        "price": 201.5
-    },
-    {
-        "itemNumber": "AD015",
-        "price": 200
-    },
-    {
-        "itemNumber": "AD016",
-        "price": 199.5
-    },
-    {
-        "itemNumber": "AE017",
-        "price": 73.3
-    },
-    {
-        "itemNumber": "AE018",
-        "price": 68.5
-    },
-    {
-        "itemNumber": "AE019",
-        "price": 75.6
-    },
-    {
-        "itemNumber": "AE020",
-        "price": 73.1
-    },
-    {
-        "itemNumber": "AF021",
-        "price": 16.5
-    },
-    {
-        "itemNumber": "AF022",
-        "price": 14.6
-    },
-    {
-        "itemNumber": "AF023",
-        "price": 17.9
-    },
-    {
-        "itemNumber": "AF024",
-        "price": 16.5
-    },
-    {
-        "itemNumber": "AG025",
-        "price": 113.8
-    },
-    {
-        "itemNumber": "AG026",
-        "price": 123.5
-    },
-    {
-        "itemNumber": "AG027",
-        "price": 110.3
-    },
-    {
-        "itemNumber": "AG028",
-        "price": 115
-    },
-    {
-        "itemNumber": "AH029",
-        "price": 24.2
-    },
-    {
-        "itemNumber": "AH030",
-        "price": 23.8
-    },
-    {
-        "itemNumber": "AH031",
-        "price": 25.6
-    },
-    {
-        "itemNumber": "AH032",
-        "price": 24.3
-    },
-    {
-        "itemNumber": "AI033",
-        "price": 45
-    },
-    {
-        "itemNumber": "AI034",
-        "price": 44.5
-    },
-    {
-        "itemNumber": "AI035",
-        "price": 47.5
-    },
-    {
-        "itemNumber": "AI036",
-        "price": 44.5
-    },
-    {
-        "itemNumber": "AJ037",
-        "price": 65.9
-    },
-    {
-        "itemNumber": "AJ038",
-        "price": 65.9
-    },
-    {
-        "itemNumber": "AJ039",
-        "price": 66.7
-    },
-    {
-        "itemNumber": "AJ040",
-        "price": 64.7
-    },
-    {
-        "itemNumber": "AK041",
-        "price": 204.8
-    },
-    {
-        "itemNumber": "AK042",
-        "price": 206.7
-    },
-    {
-        "itemNumber": "AK043",
-        "price": 205.7
-    },
-    {
-        "itemNumber": "AK044",
-        "price": 204.8
+        "name": "Kakao"
     }
 ]

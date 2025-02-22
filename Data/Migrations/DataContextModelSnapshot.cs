@@ -62,7 +62,7 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<string>("ItemNumber")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -71,23 +71,6 @@ namespace dagnys2.api.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Ingredients");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.IngredientType", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("IngredientTypes");
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.Phone", b =>
@@ -172,15 +155,12 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("IngredientID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("IngredientTypeID")
-                        .HasColumnType("INTEGER");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("SupplierID", "IngredientID", "IngredientTypeID");
+                    b.HasKey("SupplierID", "IngredientID");
 
-                    b.HasIndex("IngredientID")
-                        .IsUnique();
-
-                    b.HasIndex("IngredientTypeID");
+                    b.HasIndex("IngredientID");
 
                     b.ToTable("SupplierIngredients");
                 });
@@ -235,14 +215,8 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.SupplierIngredient", b =>
                 {
                     b.HasOne("dagnys2.api.Entities.Ingredient", "Ingredient")
-                        .WithOne("SupplierIngredient")
-                        .HasForeignKey("dagnys2.api.Entities.SupplierIngredient", "IngredientID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("dagnys2.api.Entities.IngredientType", "IngredientType")
                         .WithMany("SupplierIngredients")
-                        .HasForeignKey("IngredientTypeID")
+                        .HasForeignKey("IngredientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -253,8 +227,6 @@ namespace dagnys2.api.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Ingredient");
-
-                    b.Navigation("IngredientType");
 
                     b.Navigation("Supplier");
                 });
@@ -297,11 +269,6 @@ namespace dagnys2.api.Data.Migrations
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.Ingredient", b =>
-                {
-                    b.Navigation("SupplierIngredient");
-                });
-
-            modelBuilder.Entity("dagnys2.api.Entities.IngredientType", b =>
                 {
                     b.Navigation("SupplierIngredients");
                 });

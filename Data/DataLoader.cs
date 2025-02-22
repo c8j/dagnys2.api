@@ -22,7 +22,6 @@ public static class DataLoader
             dataContext.AddressTypes.Any() ||
             dataContext.Phones.Any() ||
             dataContext.PhoneTypes.Any() ||
-            dataContext.IngredientTypes.Any() ||
             dataContext.Ingredients.Any() ||
             dataContext.Suppliers.Any() ||
             dataContext.SupplierAddresses.Any() ||
@@ -35,7 +34,6 @@ public static class DataLoader
         var phones = JsonSerializer.Deserialize<List<Phone>>(File.ReadAllText("Data/json/phones.json"), Options);
         var phoneTypes = JsonSerializer.Deserialize<List<PhoneType>>(File.ReadAllText("Data/json/phoneTypes.json"), Options);
         var ingredients = JsonSerializer.Deserialize<List<Ingredient>>(File.ReadAllText("Data/json/ingredients.json"), Options);
-        var ingredientTypes = JsonSerializer.Deserialize<List<IngredientType>>(File.ReadAllText("Data/json/ingredientTypes.json"), Options);
         var suppliers = JsonSerializer.Deserialize<List<Supplier>>(File.ReadAllText("Data/json/suppliers.json"), Options);
         var supplierAddresses = JsonSerializer.Deserialize<List<SupplierAddress>>(File.ReadAllText("Data/json/supplierAddresses.json"), Options);
         var supplierPhones = JsonSerializer.Deserialize<List<SupplierPhone>>(File.ReadAllText("Data/json/supplierPhones.json"), Options);
@@ -47,24 +45,22 @@ public static class DataLoader
             phones is not null && phones.Count > 0 &&
             phoneTypes is not null && phoneTypes.Count > 0 &&
             ingredients is not null && ingredients.Count > 0 &&
-            ingredientTypes is not null && ingredientTypes.Count > 0 &&
             suppliers is not null && suppliers.Count > 0 &&
             supplierAddresses is not null && supplierAddresses.Count > 0 &&
             supplierPhones is not null && supplierPhones.Count > 0 &&
             supplierIngredients is not null && supplierIngredients.Count > 0
             )
         {
-            await dataContext.Addresses.AddRangeAsync(addresses);
-            await dataContext.AddressTypes.AddRangeAsync(addressTypes);
-            await dataContext.Phones.AddRangeAsync(phones);
-            await dataContext.PhoneTypes.AddRangeAsync(phoneTypes);
-            await dataContext.IngredientTypes.AddRangeAsync(ingredientTypes);
-            await dataContext.Ingredients.AddRangeAsync(ingredients);
-            await dataContext.Suppliers.AddRangeAsync(suppliers);
+            dataContext.AddressTypes.AddRange(addressTypes);
+            dataContext.Addresses.AddRange(addresses);
+            dataContext.PhoneTypes.AddRange(phoneTypes);
+            dataContext.Phones.AddRange(phones);
+            dataContext.Ingredients.AddRange(ingredients);
+            dataContext.Suppliers.AddRange(suppliers);
             await dataContext.SaveChangesAsync();
-            await dataContext.SupplierAddresses.AddRangeAsync(supplierAddresses);
-            await dataContext.SupplierPhones.AddRangeAsync(supplierPhones);
-            await dataContext.SupplierIngredients.AddRangeAsync(supplierIngredients);
+            dataContext.SupplierAddresses.AddRange(supplierAddresses);
+            dataContext.SupplierPhones.AddRange(supplierPhones);
+            dataContext.SupplierIngredients.AddRange(supplierIngredients);
             await dataContext.SaveChangesAsync();
         }
     }

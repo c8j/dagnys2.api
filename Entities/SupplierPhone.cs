@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 namespace dagnys2.api.Entities;
 
 [PrimaryKey(nameof(SupplierID), nameof(PhoneID), nameof(PhoneTypeID))]
-public class SupplierPhone
+public record SupplierPhone
 {
     public int SupplierID { get; set; }
     public int PhoneID { get; set; }

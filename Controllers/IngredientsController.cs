@@ -1,6 +1,7 @@
 using dagnys2.api.Data;
 using dagnys2.api.Entities;
-using dagnys2.api.ViewModels;
+using dagnys2.api.ViewModels.Ingredient;
+using dagnys2.api.ViewModels.IngredientSupplier;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,133 +14,133 @@ namespace dagnys2.api.Controllers
     {
         private readonly DataContext _dataContext = dataContext;
 
-        [HttpGet("types")]
-        public async Task<ActionResult> GetIngredientTypes()
+        [HttpGet]
+        [ProducesResponseType<List<SimpleIngredientVM>>(200)]
+        public async Task<ActionResult> GetIngredients()
         {
-            var ingredientTypes = await _dataContext.IngredientTypes
-            .Select(ingredientType => new
+            var ingredients = await _dataContext.Ingredients
+            .Select(ingredient => new SimpleIngredientVM
             {
-                ingredientType.ID,
-                ingredientType.Name
+                ID = ingredient.ID,
+                ItemNumber = ingredient.ItemNumber,
+                Name = ingredient.Name,
+
             })
             .ToListAsync();
-            return Ok(ingredientTypes);
+            return Ok(ingredients);
         }
 
-        [HttpGet("types/{typeID}")]
-        public async Task<ActionResult> GetIngredientType(int typeID)
+        [HttpGet("{id}")]
+        [ProducesResponseType<IngredientVM>(200)]
+        [ProducesResponseType<string>(404)]
+        public async Task<ActionResult> GetIngredient(int id)
         {
-            var ingredientType = await _dataContext.IngredientTypes.FindAsync(typeID);
+            var ingredient = await _dataContext.Ingredients
+            .Include(i => i.SupplierIngredients)
+            .ThenInclude(si => si.Supplier)
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(ingredient => ingredient.ID == id);
 
-            if (ingredientType is null) return NotFound($"Kunde inte hitta någon ingredienskategori med id {typeID}");
-
-            var suppliers = await _dataContext.SupplierIngredients
-            .Where(supplierIngredient => supplierIngredient.IngredientTypeID == ingredientType.ID)
-            .Select(supplierIngredient => new
-            {
-                supplierIngredient.SupplierID,
-                supplierIngredient.Supplier.Name,
-                supplierIngredient.Ingredient.ItemNumber,
-                supplierIngredient.Ingredient.Price
-            }).ToListAsync();
-
-            return Ok(new
-            {
-                Type = ingredientType.Name,
-                Suppliers = suppliers
-            });
+            return ingredient is null
+                ? NotFound($"Kunde inte hitta någon ingrediens med id {id}")
+                : Ok(new
+                IngredientVM
+                {
+                    ItemNumber = ingredient.ItemNumber,
+                    Name = ingredient.Name,
+                    Suppliers = ingredient.SupplierIngredients
+                    .Select(si => new
+                    IngredientSupplierVM
+                    {
+                        SupplierID = si.SupplierID,
+                        SupplierName = si.Supplier.Name,
+                        Price = si.Price
+                    }).ToList()
+                });
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddIngredientToSupplier(IngredientPostVM ingredientPostVM)
+        [ProducesResponseType<IngredientVM>(201)]
+        [ProducesResponseType<string>(400)]
+        public async Task<ActionResult> CreateIngredient(IngredientPostVM ingredientPostVM)
         {
-            var ingredientType = await _dataContext.IngredientTypes.FirstOrDefaultAsync(ingredientType => ingredientType.Name == ingredientPostVM.Type);
-            if (ingredientType is null)
+            var ingredient = await _dataContext.Ingredients.FirstOrDefaultAsync(ingredient => ingredient.ItemNumber == ingredientPostVM.ItemNumber);
+            if (ingredient is not null)
             {
-                ingredientType = new IngredientType()
-                {
-                    Name = ingredientPostVM.Type
-                };
-                try
-                {
-                    await _dataContext.IngredientTypes.AddAsync(ingredientType);
-                    await _dataContext.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest($"Något gick fel: {ex.Message}");
-                }
+                return BadRequest($"Ingrediensen med produktnummer {ingredientPostVM.ItemNumber} finns redan.");
             }
-
-            var supplier = await _dataContext.Suppliers.FirstOrDefaultAsync(supplier => supplier.ID == ingredientPostVM.SupplierID);
-            if (supplier is null) return BadRequest($"Kunde inte hitta någon leverantör med id {ingredientPostVM.SupplierID}. Stavade du fel?");
-
-            var supplierIngredients = await _dataContext.SupplierIngredients
-                .Where(supplierIngredient => supplierIngredient.SupplierID == supplier.ID)
-                .Include(supplierIngredient => supplierIngredient.IngredientType)
-                .ToListAsync();
-
-            if (supplierIngredients.Any(supplierIngredient => supplierIngredient.IngredientType.Name == ingredientType.Name)) return BadRequest($"Ingrediensen redan finns hos leverantören.");
 
             var newIngredient = new Ingredient
             {
                 ItemNumber = ingredientPostVM.ItemNumber,
-                Price = ingredientPostVM.Price
+                Name = ingredientPostVM.Name
             };
 
             try
             {
-                await _dataContext.Ingredients.AddAsync(newIngredient);
+                _dataContext.Ingredients.Add(newIngredient);
                 await _dataContext.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(GetIngredient), new { id = newIngredient.ID }, new
+                IngredientVM
+                {
+                    ItemNumber = newIngredient.ItemNumber,
+                    Name = newIngredient.Name
+                });
             }
             catch (Exception ex)
             {
                 return BadRequest($"Något gick fel: {ex.Message}");
             }
-
-            var newSupplierIngredient = new SupplierIngredient
-            {
-                Supplier = supplier,
-                Ingredient = newIngredient,
-                IngredientType = ingredientType
-            };
-
-            try
-            {
-                await _dataContext.SupplierIngredients.AddAsync(newSupplierIngredient);
-                await _dataContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Något gick fel: {ex.Message}");
-            }
-
-            return CreatedAtAction(nameof(GetIngredientType), new { typeID = newIngredient.ID }, new
-            {
-                ingredientType.Name,
-                SupplierID = supplier.ID,
-                SupplierName = supplier.Name,
-                newIngredient.ItemNumber,
-                newIngredient.Price
-            });
         }
 
-        [HttpPatch("{typeID}")]
-        public async Task<ActionResult> ChangePrice(int typeID, IngredientPricePatchVM ingredientPricePatchVM)
+        [HttpPatch("{id}/suppliers")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType<string>(404)]
+        public async Task<ActionResult> UpdateIngredient(int id, IngredientSuppliersPatchVM patchVM)
         {
-            var ingredientType = await _dataContext.IngredientTypes.FindAsync(typeID);
-            if (ingredientType is null) return NotFound($"Kunde inte hitta någon ingredienskategori med id {typeID}");
+            var ingredient = await _dataContext.Ingredients
+            .FirstOrDefaultAsync(i => i.ID == id);
 
-            var supplier = await _dataContext.Suppliers.FindAsync(ingredientPricePatchVM.SupplierID);
-            if (supplier is null) return NotFound($"Kunde inte hitta någon leverantör med id {ingredientPricePatchVM.SupplierID}");
+            if (ingredient is null) return NotFound($"Kunde inte hitta någon ingrediens med id {id}");
+
+            await _dataContext.SupplierIngredients.Where(si => si.IngredientID == ingredient.ID).ExecuteDeleteAsync();
+
+            foreach (var supplierVM in patchVM.SuppliersVMs)
+            {
+                var supplierExists = await _dataContext.Suppliers.AnyAsync(s => s.ID == supplierVM.SupplierID);
+                if (!supplierExists) return NotFound($"Kunde inte hitta någon leverantör med id {supplierVM.SupplierID}");
+
+                var newSupplierIngredient = new SupplierIngredient
+                {
+                    IngredientID = ingredient.ID,
+                    SupplierID = supplierVM.SupplierID,
+                    Price = supplierVM.Price
+                };
+
+                _dataContext.Add(newSupplierIngredient);
+            }
+
+            await _dataContext.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType<string>(404)]
+        public async Task<ActionResult> ChangePrice(int id, IngredientPricePatchVM ingredientPricePatchVM)
+        {
+            var ingredient = await _dataContext.Ingredients
+            .FirstOrDefaultAsync(i => i.ID == id);
+
+            if (ingredient is null) return NotFound($"Kunde inte hitta någon ingrediens med id {id}");
 
             var supplierIngredient = await _dataContext.SupplierIngredients
-            .Where(supplierIngredient => supplierIngredient.IngredientTypeID == typeID && supplierIngredient.SupplierID == ingredientPricePatchVM.SupplierID)
-            .Include(supplierIngredient => supplierIngredient.Ingredient)
-            .FirstOrDefaultAsync();
-            if (supplierIngredient is null) return NotFound($"Kunde inte hitta någon ingrediens av typ {ingredientType.Name} som säljs av leverantören med id {ingredientPricePatchVM.SupplierID}");
+            .FirstOrDefaultAsync(si => si.SupplierID == ingredientPricePatchVM.SupplierID);
 
-            supplierIngredient.Ingredient.Price = ingredientPricePatchVM.Price;
+            if (supplierIngredient is null) return NotFound($"Kunde inte hitta någon ingrediens med id {id} som säljs av leverantör med id {ingredientPricePatchVM.SupplierID}.");
+
+            supplierIngredient.Price = ingredientPricePatchVM.Price;
             await _dataContext.SaveChangesAsync();
             return NoContent();
         }

@@ -45,24 +45,11 @@ namespace dagnys2.api.Data.Migrations
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ItemNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ingredients", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IngredientTypes",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IngredientTypes", x => x.ID);
+                    table.PrimaryKey("PK_Ingredients", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -143,17 +130,11 @@ namespace dagnys2.api.Data.Migrations
                 {
                     SupplierID = table.Column<int>(type: "INTEGER", nullable: false),
                     IngredientID = table.Column<int>(type: "INTEGER", nullable: false),
-                    IngredientTypeID = table.Column<int>(type: "INTEGER", nullable: false)
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SupplierIngredients", x => new { x.SupplierID, x.IngredientID, x.IngredientTypeID });
-                    table.ForeignKey(
-                        name: "FK_SupplierIngredients_IngredientTypes_IngredientTypeID",
-                        column: x => x.IngredientTypeID,
-                        principalTable: "IngredientTypes",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_SupplierIngredients", x => new { x.SupplierID, x.IngredientID });
                     table.ForeignKey(
                         name: "FK_SupplierIngredients_Ingredients_IngredientID",
                         column: x => x.IngredientID,
@@ -212,12 +193,6 @@ namespace dagnys2.api.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_IngredientTypes_Name",
-                table: "IngredientTypes",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PhoneTypes_Name",
                 table: "PhoneTypes",
                 column: "Name",
@@ -236,13 +211,7 @@ namespace dagnys2.api.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_SupplierIngredients_IngredientID",
                 table: "SupplierIngredients",
-                column: "IngredientID",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_SupplierIngredients_IngredientTypeID",
-                table: "SupplierIngredients",
-                column: "IngredientTypeID");
+                column: "IngredientID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SupplierPhones_PhoneID",
@@ -278,9 +247,6 @@ namespace dagnys2.api.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Addresses");
-
-            migrationBuilder.DropTable(
-                name: "IngredientTypes");
 
             migrationBuilder.DropTable(
                 name: "Ingredients");

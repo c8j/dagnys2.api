@@ -1,5 +1,11 @@
+using System.Net;
+
 using dagnys2.api.Data;
-using dagnys2.api.Entities;
+using dagnys2.api.ViewModels.Address;
+using dagnys2.api.ViewModels.Ingredient;
+using dagnys2.api.ViewModels.IngredientSupplier;
+using dagnys2.api.ViewModels.Phone;
+using dagnys2.api.ViewModels.Supplier;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,47 +19,26 @@ namespace dagnys2.api.Controllers
         private readonly DataContext _dataContext = dataContext;
 
         [HttpGet]
-        public async Task<ActionResult<List<Supplier>>> GetSuppliers()
+        [ProducesResponseType<List<SimpleSupplierVM>>(200)]
+        public async Task<ActionResult> GetSuppliers()
         {
             var suppliers = await _dataContext.Suppliers
-            .Include(context => context.SupplierAddresses)
-            .Include(context => context.SupplierPhones)
-            .Include(context => context.SupplierIngredients)
             .Select(supplier => new
+            SimpleSupplierVM
             {
-                SupplierID = supplier.ID,
-                supplier.Name,
-                supplier.ContactName,
-                supplier.Email,
-                Addresses = supplier.SupplierAddresses
-                .Select(supplierAddress => new
-                {
-                    AddressType = supplierAddress.AddressType.Name,
-                    supplierAddress.Address.StreetLine,
-                    supplierAddress.Address.PostalCode,
-                    supplierAddress.Address.City
-                }),
-                Phones = supplier.SupplierPhones
-                .Select(supplierPhones => new
-                {
-                    PhoneType = supplierPhones.PhoneType.Name,
-                    supplierPhones.Phone.Number
-                }),
-                Ingredients = supplier.SupplierIngredients
-                .Select(supplierIngredient => new
-                {
-                    supplierIngredient.Ingredient.ItemNumber,
-                    IngredientType = supplierIngredient.IngredientType.Name,
-                    supplierIngredient.Ingredient.Price
-                })
+                ID = supplier.ID,
+                Name = supplier.Name,
+                ContactName = supplier.ContactName,
+                Email = supplier.Email,
             })
-            .AsSplitQuery()
             .ToListAsync();
             return Ok(suppliers);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Supplier>> GetSupplier(int id)
+        [ProducesResponseType<SupplierVM>(200)]
+        [ProducesResponseType<string>(404)]
+        public async Task<ActionResult> GetSupplier(int id)
         {
             var supplier = await _dataContext.Suppliers
             .Where(supplier => supplier.ID == id)
@@ -61,39 +46,47 @@ namespace dagnys2.api.Controllers
             .Include(context => context.SupplierPhones)
             .Include(context => context.SupplierIngredients)
             .Select(supplier => new
+            SupplierVM
             {
-                SupplierID = supplier.ID,
-                supplier.Name,
-                supplier.ContactName,
-                supplier.Email,
+                Name = supplier.Name,
+                ContactName = supplier.ContactName,
+                Email = supplier.Email,
                 Addresses = supplier.SupplierAddresses
                 .Select(supplierAddress => new
+                AddressVM
                 {
-                    AddressType = supplierAddress.AddressType.Name,
-                    supplierAddress.Address.StreetLine,
-                    supplierAddress.Address.PostalCode,
-                    supplierAddress.Address.City
-                }),
+                    ID = supplierAddress.AddressID,
+                    Type = supplierAddress.AddressType.Name,
+                    StreetLine = supplierAddress.Address.StreetLine,
+                    PostalCode = supplierAddress.Address.PostalCode,
+                    City = supplierAddress.Address.City
+                })
+                .ToList(),
                 Phones = supplier.SupplierPhones
-                .Select(supplierPhones => new
+                .Select(supplierPhone => new
+                PhoneVM
                 {
-                    PhoneType = supplierPhones.PhoneType.Name,
-                    supplierPhones.Phone.Number
-                }),
+                    ID = supplierPhone.PhoneID,
+                    Type = supplierPhone.PhoneType.Name,
+                    Number = supplierPhone.Phone.Number
+                })
+                .ToList(),
                 Ingredients = supplier.SupplierIngredients
                 .Select(supplierIngredient => new
+                SupplierIngredientVM
                 {
-                    supplierIngredient.Ingredient.ItemNumber,
-                    IngredientType = supplierIngredient.IngredientType.Name,
-                    supplierIngredient.Ingredient.Price
-                })
+                    ID = supplierIngredient.IngredientID,
+                    ItemNumber = supplierIngredient.Ingredient.ItemNumber,
+                    Name = supplierIngredient.Ingredient.Name,
+                    Price = supplierIngredient.Price
+                }).ToList()
             })
             .AsSplitQuery()
             .FirstOrDefaultAsync();
 
             return supplier is null ?
-            (ActionResult<Supplier>)NotFound($"Kunde inte hitta någon leverantör med id {id}") :
-            (ActionResult<Supplier>)Ok(supplier);
+            NotFound($"Kunde inte hitta någon leverantör med id {id}") :
+            Ok(supplier);
         }
     }
 }
