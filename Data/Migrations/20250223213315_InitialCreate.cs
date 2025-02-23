@@ -163,8 +163,8 @@ namespace dagnys2.api.Data.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GeneratedNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    DateCreated = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    GeneratedNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateCreated = table.Column<DateOnly>(type: "TEXT", nullable: false),
                     CustomerID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

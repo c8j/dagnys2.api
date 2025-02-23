@@ -5,5 +5,5 @@ namespace dagnys2.api.ViewModels.Customer;
 
 public record class CustomerVM : EntityVM
 {
-    public ICollection<OrderVM> Orders { get; init; }
+    public ICollection<SimpleOrderVM> Orders { get; init; }
 }

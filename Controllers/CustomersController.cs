@@ -72,7 +72,7 @@ public class CustomersController(DataContext dataContext) : ControllerBase
             .ToList(),
             Orders = customer.Orders
             .Select(order => new
-            OrderVM
+            SimpleOrderVM
             {
                 ID = order.ID,
                 OrderNumber = order.GeneratedNumber,
@@ -111,12 +111,18 @@ public class CustomersController(DataContext dataContext) : ControllerBase
         _dataContext.Add(customer);
         //await _dataContext.SaveChangesAsync();
 
+        var typeAdded = new Dictionary<int, bool>();
+
         foreach (var addressVM in postVM.Addresses)
         {
             var newAddressType = await _dataContext.AddressTypes.FindAsync(addressVM.TypeID);
             if (newAddressType is null)
             {
                 return BadRequest($"Det finns ingen adresstyp med ID '{addressVM.TypeID}'.");
+            }
+            if (!typeAdded.TryAdd(newAddressType.ID, true))
+            {
+                return BadRequest("Vänligen ange endast en post per adresstyp.");
             }
 
             var newAddress = await _dataContext.Addresses.FirstOrDefaultAsync(
@@ -143,12 +149,18 @@ public class CustomersController(DataContext dataContext) : ControllerBase
         }
         //await _dataContext.SaveChangesAsync();
 
+        typeAdded.Clear();
+
         foreach (var phoneVM in postVM.Phones)
         {
             var newPhoneType = await _dataContext.PhoneTypes.FindAsync(phoneVM.TypeID);
             if (newPhoneType is null)
             {
                 return BadRequest($"Det finns ingen telefontyp med ID '{phoneVM.TypeID}'.");
+            }
+            if (!typeAdded.TryAdd(newPhoneType.ID, true))
+            {
+                return BadRequest("Vänligen ange endast en post per telefontyp.");
             }
 
             var newPhone = await _dataContext.Phones.FirstOrDefaultAsync(
@@ -179,5 +191,20 @@ public class CustomersController(DataContext dataContext) : ControllerBase
             ContactName = customer.ContactName,
             Email = customer.Email
         });
+    }
+
+    [HttpPatch("{id}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType<string>(404)]
+    public async Task<ActionResult> ChangeContact(int id, EntityPatchVM patchVM)
+    {
+        var customer = await _dataContext.Customers
+        .FirstOrDefaultAsync(i => i.ID == id);
+
+        if (customer is null) return NotFound($"Kunde inte hitta någon kund med id {id}");
+
+        customer.ContactName = patchVM.ContactName.Trim();
+        await _dataContext.SaveChangesAsync();
+        return NoContent();
     }
 }

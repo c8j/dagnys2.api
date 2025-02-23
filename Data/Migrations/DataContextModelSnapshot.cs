@@ -172,11 +172,11 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateOnly>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("GeneratedNumber")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("GeneratedNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 

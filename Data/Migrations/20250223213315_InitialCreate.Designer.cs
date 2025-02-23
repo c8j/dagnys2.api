@@ -11,7 +11,7 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223143304_InitialCreate")]
+    [Migration("20250223213315_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -175,11 +175,11 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateCreated")
+                    b.Property<DateOnly>("DateCreated")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("GeneratedNumber")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("GeneratedNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
