@@ -25,6 +25,8 @@ public static class DataLoader
             dataContext.EntityAddresses.Any() ||
             dataContext.EntityPhones.Any() ||
             dataContext.Ingredients.Any() ||
+            dataContext.OrderItems.Any() ||
+            dataContext.Orders.Any() ||
             dataContext.Phones.Any() ||
             dataContext.PhoneTypes.Any() ||
             dataContext.ProductBatches.Any() ||
@@ -39,6 +41,8 @@ public static class DataLoader
         var entityAddresses = JsonSerializer.Deserialize<List<EntityAddress>>(File.ReadAllText("Data/json/entityAddresses.json"), Options);
         var entityPhones = JsonSerializer.Deserialize<List<EntityPhone>>(File.ReadAllText("Data/json/entityPhones.json"), Options);
         var ingredients = JsonSerializer.Deserialize<List<Ingredient>>(File.ReadAllText("Data/json/ingredients.json"), Options);
+        var orderItems = JsonSerializer.Deserialize<List<OrderItem>>(File.ReadAllText("Data/json/orderItems.json"), Options);
+        var orders = JsonSerializer.Deserialize<List<Order>>(File.ReadAllText("Data/json/orders.json"), Options);
         var phones = JsonSerializer.Deserialize<List<Phone>>(File.ReadAllText("Data/json/phones.json"), Options);
         var phoneTypes = JsonSerializer.Deserialize<List<PhoneType>>(File.ReadAllText("Data/json/phoneTypes.json"), Options);
         var productBatches = JsonSerializer.Deserialize<List<ProductBatch>>(File.ReadAllText("Data/json/productBatches.json"), Options);
@@ -54,6 +58,8 @@ public static class DataLoader
             entityAddresses is not null && entityAddresses.Count > 0 &&
             entityPhones is not null && entityPhones.Count > 0 &&
             ingredients is not null && ingredients.Count > 0 &&
+            orderItems is not null && orderItems.Count > 0 &&
+            orders is not null && orders.Count > 0 &&
             phones is not null && phones.Count > 0 &&
             phoneTypes is not null && phoneTypes.Count > 0 &&
             products is not null && products.Count > 0 &&
@@ -67,6 +73,7 @@ public static class DataLoader
             dataContext.Batches.AddRange(batches);
             dataContext.Customers.AddRange(customers);
             dataContext.Ingredients.AddRange(ingredients);
+            dataContext.Orders.AddRange(orders);
             dataContext.Phones.AddRange(phones);
             dataContext.PhoneTypes.AddRange(phoneTypes);
             dataContext.Products.AddRange(products);
@@ -74,8 +81,9 @@ public static class DataLoader
             await dataContext.SaveChangesAsync();
             dataContext.EntityAddresses.AddRange(entityAddresses);
             dataContext.EntityPhones.AddRange(entityPhones);
-            dataContext.SupplierIngredients.AddRange(supplierIngredients);
+            dataContext.OrderItems.AddRange(orderItems);
             dataContext.ProductBatches.AddRange(productBatches);
+            dataContext.SupplierIngredients.AddRange(supplierIngredients);
             await dataContext.SaveChangesAsync();
         }
     }

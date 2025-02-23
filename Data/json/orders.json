@@ -1,0 +1,17 @@
+[
+    {
+        "generatedNumber": 11111031,
+        "dateCreated": "2025-02-21",
+        "customerID": 1
+    },
+    {
+        "generatedNumber": 11123441,
+        "dateCreated": "2025-02-23",
+        "customerID": 2
+    },
+    {
+        "generatedNumber": 11111151,
+        "dateCreated": "2025-02-23",
+        "customerID": 1
+    }
+]
