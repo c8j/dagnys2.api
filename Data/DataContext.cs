@@ -14,6 +14,8 @@ public class DataContext(DbContextOptions options) : DbContext(options)
     public DbSet<EntityAddress> EntityAddresses { get; set; }
     public DbSet<EntityPhone> EntityPhones { get; set; }
     public DbSet<Ingredient> Ingredients { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
+    public DbSet<Order> Orders { get; set; }
     public DbSet<Phone> Phones { get; set; }
     public DbSet<PhoneType> PhoneTypes { get; set; }
     public DbSet<ProductBatch> ProductBatches { get; set; }
