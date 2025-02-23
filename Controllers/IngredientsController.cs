@@ -48,14 +48,13 @@ namespace dagnys2.api.Controllers
                 {
                     ItemNumber = ingredient.ItemNumber,
                     Name = ingredient.Name,
-                    Suppliers = ingredient.SupplierIngredients
-                    .Select(si => new
-                    IngredientSupplierVM
-                    {
-                        SupplierID = si.SupplierID,
-                        SupplierName = si.Supplier.Name,
-                        PriceKrPerKg = si.PriceKrPerKg
-                    }).ToList()
+                    Suppliers = [..ingredient.SupplierIngredients
+                        .Select(si => new IngredientSupplierVM
+                        {
+                            SupplierID = si.SupplierID,
+                            SupplierName = si.Supplier.Name,
+                            PriceKrPerKg = si.PriceKrPerKg
+                        })]
                 });
         }
 

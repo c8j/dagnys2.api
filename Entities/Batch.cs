@@ -6,5 +6,6 @@ public record class Batch
     public DateOnly ManufactureDate { get; set; }
     public DateOnly ExpirationDate { get; set; }
 
-    public ICollection<Product> Products { get; set; }
+    public ICollection<Product> Products { get; } = [];
+    public ICollection<ProductBatch> ProductBatches { get; } = [];
 }

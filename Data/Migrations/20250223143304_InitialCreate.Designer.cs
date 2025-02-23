@@ -11,7 +11,7 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223111733_InitialCreate")]
+    [Migration("20250223143304_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -246,6 +246,9 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("AmountInPackage")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ItemNumber")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -384,7 +387,7 @@ namespace dagnys2.api.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("dagnys2.api.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -397,13 +400,13 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.ProductBatch", b =>
                 {
                     b.HasOne("dagnys2.api.Entities.Batch", "Batch")
-                        .WithMany()
+                        .WithMany("ProductBatches")
                         .HasForeignKey("BatchID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("dagnys2.api.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("ProductBatches")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -442,6 +445,11 @@ namespace dagnys2.api.Data.Migrations
                     b.Navigation("EntityAddresses");
                 });
 
+            modelBuilder.Entity("dagnys2.api.Entities.Batch", b =>
+                {
+                    b.Navigation("ProductBatches");
+                });
+
             modelBuilder.Entity("dagnys2.api.Entities.Entity", b =>
                 {
                     b.Navigation("EntityAddresses");
@@ -467,6 +475,13 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.PhoneType", b =>
                 {
                     b.Navigation("EntityPhones");
+                });
+
+            modelBuilder.Entity("dagnys2.api.Entities.Product", b =>
+                {
+                    b.Navigation("OrderItems");
+
+                    b.Navigation("ProductBatches");
                 });
 
             modelBuilder.Entity("dagnys2.api.Entities.Customer", b =>

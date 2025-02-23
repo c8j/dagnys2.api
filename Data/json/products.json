@@ -1,29 +1,34 @@
 [
     {
+        "itemNumber": "A1",
         "name": "Solrosbullar",
         "weightInGrams": 70,
         "priceKrPerUnit": 30,
         "amountInPackage": 3
     },
     {
+        "itemNumber": "A2",
         "name": "Kanelbullar",
         "weightInGrams": 95,
         "priceKrPerUnit": 60,
         "amountInPackage": 5
     },
     {
+        "itemNumber": "A3",
         "name": "Wienerbröd",
         "weightInGrams": 80,
         "priceKrPerUnit": 9.95,
         "amountInPackage": 1
     },
     {
+        "itemNumber": "A4",
         "name": "Saffransbullar",
         "weightInGrams": 55,
         "priceKrPerUnit": 40,
         "amountInPackage": 8
     },
     {
+        "itemNumber": "A5",
         "name": "Semlor",
         "weightInGrams": 300,
         "priceKrPerUnit": 55,

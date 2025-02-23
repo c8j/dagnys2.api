@@ -115,6 +115,7 @@ namespace dagnys2.api.Data.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    ItemNumber = table.Column<string>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     WeightInGrams = table.Column<int>(type: "INTEGER", nullable: false),
                     PriceKrPerUnit = table.Column<decimal>(type: "TEXT", nullable: false),
