@@ -11,7 +11,7 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223104314_InitialCreate")]
+    [Migration("20250223111733_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -95,6 +95,9 @@ namespace dagnys2.api.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Entities");
 
@@ -303,9 +306,6 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.Supplier", b =>
                 {
                     b.HasBaseType("dagnys2.api.Entities.Entity");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("Supplier");
                 });

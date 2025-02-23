@@ -1,9 +1,10 @@
 using dagnys2.api.Data;
 using dagnys2.api.Entities;
 using dagnys2.api.ViewModels.Address;
+using dagnys2.api.ViewModels.Customer;
 using dagnys2.api.ViewModels.Entity;
+using dagnys2.api.ViewModels.Order;
 using dagnys2.api.ViewModels.Phone;
-using dagnys2.api.ViewModels.Supplier;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,103 +13,102 @@ namespace dagnys2.api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class SuppliersController(DataContext dataContext) : ControllerBase
+public class CustomersController(DataContext dataContext) : ControllerBase
 {
     private readonly DataContext _dataContext = dataContext;
 
     [HttpGet]
     [ProducesResponseType<List<SimpleEntityVM>>(200)]
-    public async Task<ActionResult> GetSuppliers()
+    public async Task<ActionResult> GetCustomers()
     {
-        var suppliers = await _dataContext.Suppliers
-        .Select(supplier => new
+        var customers = await _dataContext.Customers
+        .Select(customer => new
         SimpleEntityVM
         {
-            ID = supplier.ID,
-            Name = supplier.Name,
-            ContactName = supplier.ContactName,
-            Email = supplier.Email,
+            ID = customer.ID,
+            Name = customer.Name,
+            ContactName = customer.ContactName,
+            Email = customer.Email,
         })
         .ToListAsync();
-        return Ok(suppliers);
+        return Ok(customers);
     }
 
     [HttpGet("{id}")]
-    [ProducesResponseType<SupplierVM>(200)]
+    [ProducesResponseType<CustomerVM>(200)]
     [ProducesResponseType<string>(404)]
-    public async Task<ActionResult> GetSupplier(int id)
+    public async Task<ActionResult> GetCustomer(int id)
     {
-        var supplier = await _dataContext.Suppliers
-        .Where(supplier => supplier.ID == id)
+        var customer = await _dataContext.Customers
+        .Where(customer => customer.ID == id)
         .Include(context => context.EntityAddresses)
         .Include(context => context.EntityPhones)
-        .Include(context => context.SupplierIngredients)
-        .Select(supplier => new
-        SupplierVM
+        .Include(context => context.Orders)
+        .Select(customer => new
+        CustomerVM
         {
-            Name = supplier.Name,
-            ContactName = supplier.ContactName,
-            Email = supplier.Email,
-            Addresses = supplier.EntityAddresses
-            .Select(supplierAddress => new
+            Name = customer.Name,
+            ContactName = customer.ContactName,
+            Email = customer.Email,
+            Addresses = customer.EntityAddresses
+            .Select(customerAddress => new
             AddressVM
             {
-                // ID = supplierAddress.AddressID,
-                Type = supplierAddress.AddressType.Name,
-                StreetLine = supplierAddress.Address.StreetLine,
-                PostalCode = supplierAddress.Address.PostalCode,
-                City = supplierAddress.Address.City
+                // ID = customerAddress.AddressID,
+                Type = customerAddress.AddressType.Name,
+                StreetLine = customerAddress.Address.StreetLine,
+                PostalCode = customerAddress.Address.PostalCode,
+                City = customerAddress.Address.City
             })
             .ToList(),
-            Phones = supplier.EntityPhones
-            .Select(supplierPhone => new
+            Phones = customer.EntityPhones
+            .Select(customerPhone => new
             PhoneVM
             {
-                // ID = supplierPhone.PhoneID,
-                Type = supplierPhone.PhoneType.Name,
-                Number = supplierPhone.Phone.Number
+                // ID = customerPhone.PhoneID,
+                Type = customerPhone.PhoneType.Name,
+                Number = customerPhone.Phone.Number
             })
             .ToList(),
-            Products = supplier.SupplierIngredients
-            .Select(supplierIngredient => new
-            SupplierIngredientVM
+            Orders = customer.Orders
+            .Select(order => new
+            OrderVM
             {
-                ID = supplierIngredient.IngredientID,
-                ItemNumber = supplierIngredient.Ingredient.ItemNumber,
-                Name = supplierIngredient.Ingredient.Name,
-                PriceKrPerKg = supplierIngredient.PriceKrPerKg
+                ID = order.ID,
+                OrderNumber = order.GeneratedNumber,
+                DateCreated = order.DateCreated
             }).ToList()
         })
         .AsSplitQuery()
         .FirstOrDefaultAsync();
 
-        return supplier is null ?
-        NotFound($"Kunde inte hitta någon leverantör med id {id}") :
-        Ok(supplier);
+        return customer is null ?
+        NotFound($"Kunde inte hitta någon kund med id {id}") :
+        Ok(customer);
     }
 
     [HttpPost]
-    [ProducesResponseType<SupplierVM>(201)]
+    [ProducesResponseType<CustomerVM>(201)]
     [ProducesResponseType<string>(400)]
-    public async Task<ActionResult> CreateSupplier(EntityPostVM postVM)
+    public async Task<ActionResult> CreateCustomer(EntityPostVM postVM)
     {
-        var supplier = await _dataContext.Suppliers.FirstOrDefaultAsync(
-            s => s.Email.ToLower().Trim() == postVM.Email.ToLower().Trim() ||
-            s.Name.Trim() == postVM.Name.Trim()
+        var customer = await _dataContext.Customers.FirstOrDefaultAsync(
+            c => c.Email.ToLower().Trim() == postVM.Email.ToLower().Trim() ||
+            c.Name.Trim() == postVM.Name.Trim()
         );
 
-        if (supplier is not null)
+        if (customer is not null)
         {
-            return BadRequest("Leverantören finns redan.");
+            return BadRequest("Kunden finns redan.");
         }
 
-        supplier = new Supplier
+        customer = new Customer
         {
             Name = postVM.Name.Trim(),
             ContactName = postVM.ContactName.Trim(),
             Email = postVM.Email.ToLower().Trim()
         };
-        _dataContext.Add(supplier);
+        _dataContext.Add(customer);
         //await _dataContext.SaveChangesAsync();
 
         foreach (var addressVM in postVM.Addresses)
@@ -135,7 +135,7 @@ public class SuppliersController(DataContext dataContext) : ControllerBase
 
             var newEntityAddress = new EntityAddress
             {
-                Entity = supplier,
+                Entity = customer,
                 Address = newAddress,
                 AddressType = newAddressType
             };
@@ -165,7 +165,7 @@ public class SuppliersController(DataContext dataContext) : ControllerBase
 
             var newEntityPhone = new EntityPhone
             {
-                Entity = supplier,
+                Entity = customer,
                 Phone = newPhone,
                 PhoneType = newPhoneType
             };
@@ -173,11 +173,11 @@ public class SuppliersController(DataContext dataContext) : ControllerBase
         }
         await _dataContext.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(GetSupplier), new { id = supplier.ID }, new SupplierVM
+        return CreatedAtAction(nameof(GetCustomer), new { id = customer.ID }, new CustomerVM
         {
-            Name = supplier.Name,
-            ContactName = supplier.ContactName,
-            Email = supplier.Email
+            Name = customer.Name,
+            ContactName = customer.ContactName,
+            Email = customer.Email
         });
     }
 }

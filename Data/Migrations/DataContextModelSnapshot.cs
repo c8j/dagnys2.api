@@ -93,6 +93,9 @@ namespace dagnys2.api.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Entities");
 
                     b.HasDiscriminator().HasValue("Entity");
@@ -300,9 +303,6 @@ namespace dagnys2.api.Data.Migrations
             modelBuilder.Entity("dagnys2.api.Entities.Supplier", b =>
                 {
                     b.HasBaseType("dagnys2.api.Entities.Entity");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.HasDiscriminator().HasValue("Supplier");
                 });

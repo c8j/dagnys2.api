@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace dagnys2.api.Entities;
 
+[Index(nameof(Email), IsUnique = true)]
 public abstract record Entity
 {
     public int ID { get; set; }

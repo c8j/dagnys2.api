@@ -1,9 +1,8 @@
 namespace dagnys2.api.ViewModels.Address;
 
-public record class AddressVM
+public record class AddressPostVM
 {
-    // public int ID { get; init; }
-    public string Type { get; init; }
+    public int TypeID { get; init; }
     public string StreetLine { get; init; }
     public string PostalCode { get; init; }
     public string City { get; init; }

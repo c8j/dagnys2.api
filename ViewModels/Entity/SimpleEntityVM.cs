@@ -1,6 +1,6 @@
-namespace dagnys2.api.ViewModels.Supplier;
+namespace dagnys2.api.ViewModels.Entity;
 
-public record SimpleSupplierVM
+public record SimpleEntityVM
 {
     public int ID { get; init; }
     public string Name { get; init; }
