@@ -2,126 +2,126 @@
     {
         "productID": 1,
         "batchID": 1,
-        "amount": 12
+        "quantity": 12
     },
     {
         "productID": 2,
         "batchID": 1,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 3,
         "batchID": 1,
-        "amount": 30
+        "quantity": 30
     },
     {
         "productID": 4,
         "batchID": 1,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 5,
         "batchID": 1,
-        "amount": 20
+        "quantity": 20
     },
     {
         "productID": 1,
         "batchID": 2,
-        "amount": 12
+        "quantity": 12
     },
     {
         "productID": 2,
         "batchID": 2,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 3,
         "batchID": 2,
-        "amount": 30
+        "quantity": 30
     },
     {
         "productID": 4,
         "batchID": 2,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 5,
         "batchID": 2,
-        "amount": 20
+        "quantity": 20
     },
     {
         "productID": 1,
         "batchID": 3,
-        "amount": 12
+        "quantity": 12
     },
     {
         "productID": 2,
         "batchID": 3,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 3,
         "batchID": 3,
-        "amount": 30
+        "quantity": 30
     },
     {
         "productID": 4,
         "batchID": 3,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 5,
         "batchID": 3,
-        "amount": 20
+        "quantity": 20
     },
     {
         "productID": 1,
         "batchID": 4,
-        "amount": 12
+        "quantity": 12
     },
     {
         "productID": 2,
         "batchID": 4,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 3,
         "batchID": 4,
-        "amount": 30
+        "quantity": 30
     },
     {
         "productID": 4,
         "batchID": 4,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 5,
         "batchID": 4,
-        "amount": 20
+        "quantity": 20
     },
     {
         "productID": 1,
         "batchID": 5,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 2,
         "batchID": 5,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 3,
         "batchID": 5,
-        "amount": 30
+        "quantity": 30
     },
     {
         "productID": 4,
         "batchID": 5,
-        "amount": 10
+        "quantity": 10
     },
     {
         "productID": 5,
         "batchID": 5,
-        "amount": 20
+        "quantity": 20
     }
 ]

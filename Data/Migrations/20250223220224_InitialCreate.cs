@@ -240,7 +240,7 @@ namespace dagnys2.api.Data.Migrations
                 {
                     ProductID = table.Column<int>(type: "INTEGER", nullable: false),
                     BatchID = table.Column<int>(type: "INTEGER", nullable: false),
-                    Amount = table.Column<int>(type: "INTEGER", nullable: false)
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

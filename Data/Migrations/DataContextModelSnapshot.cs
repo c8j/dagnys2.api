@@ -268,7 +268,7 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Amount")
+                    b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("BatchID", "ProductID");

@@ -11,7 +11,7 @@ using dagnys2.api.Data;
 namespace dagnys2.api.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250223213315_InitialCreate")]
+    [Migration("20250223220224_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -271,7 +271,7 @@ namespace dagnys2.api.Data.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Amount")
+                    b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("BatchID", "ProductID");

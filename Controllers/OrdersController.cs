@@ -106,7 +106,7 @@ public class OrdersController(DataContext dataContext) : ControllerBase
         int customerID,
         int orderID,
         int amountOfProducts
-    ) => int.Parse($"{customerID % 90 + 10}{orderID % 90 + 10}{orderID}{amountOfProducts % 900 + 100}");
+    ) => int.Parse($"{customerID % 90 + 10}{orderID % 90 + 10}{amountOfProducts % 900 + 100}{orderID}");
 
     [HttpPost]
     [ProducesResponseType<OrderVM>(201)]

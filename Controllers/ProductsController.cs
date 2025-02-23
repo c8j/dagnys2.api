@@ -23,6 +23,7 @@ public class ProductsController(DataContext dataContext) : ControllerBase
         .Select(p => new SimpleProductVM
         {
             ID = p.ID,
+            ItemNumber = p.ItemNumber,
             Name = p.Name,
             WeightInGrams = p.WeightInGrams,
             PriceKrPerUnit = p.PriceKrPerUnit,
@@ -50,6 +51,7 @@ public class ProductsController(DataContext dataContext) : ControllerBase
             : Ok(new
             ProductVM
             {
+                ItemNumber = product.ItemNumber,
                 Name = product.Name,
                 WeightInGrams = product.WeightInGrams,
                 PriceKrPerUnit = product.PriceKrPerUnit,
@@ -60,7 +62,7 @@ public class ProductsController(DataContext dataContext) : ControllerBase
                         ID = pb.BatchID,
                         ManufactureDate = pb.Batch.ManufactureDate,
                         ExpirationDate = pb.Batch.ExpirationDate,
-                        Amount = pb.Amount
+                        Quantity = pb.Quantity
                     })],
                 Customers = [.. product.OrderItems
                     .Select(oi => new SimpleEntityVM{
