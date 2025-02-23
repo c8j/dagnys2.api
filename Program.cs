@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var serverVersion = new MySqlServerVersion(new Version(9, 2, 0));
+
 builder.Services.AddDbContext<DataContext>(
-    options => options.UseSqlite(
-        builder.Configuration.GetConnectionString("DevConnection")
-    )
+/* options => options.UseSqlite(
+    builder.Configuration.GetConnectionString("DevConnection")
+) */
+    options => options.UseMySql(builder.Configuration.GetConnectionString("MySQL"), serverVersion)
 );
 
 builder.Services.AddControllers();
@@ -23,7 +26,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
